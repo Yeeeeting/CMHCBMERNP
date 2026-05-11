@@ -3,189 +3,379 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CBME 資源導航平台 — Clinical Competency Committee Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>CBME 資源導航平台 — 臨床能力委員會手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0a0e1a; --cyan:#00d4ff; --violet:#7b2ff7; --pink:#ff6b9d;
-  --green:#4dffb4; --amber:#ffb84d; --red:#ff5577;
-  --text:rgba(255,255,255,.95); --muted:rgba(255,255,255,.65); --dim:rgba(255,255,255,.45);
-  --glass-bg:rgba(255,255,255,.05); --glass-border:rgba(255,255,255,.1);
+  --bg:#fffaeb;
+  --bg-soft:#fef3c7;
+  --bg-section:#fef9e7;
+  --bg-card:#ffffff;
+  --bg-cream:#fffdf5;
+
+  --primary:#fbbf24;
+  --primary-dark:#f59e0b;
+  --accent:#fb923c;
+  --accent-dark:#f97316;
+
+  --blue:#60a5fa;
+  --blue-soft:#dbeafe;
+  --pink:#f472b6;
+  --pink-soft:#fce7f3;
+  --green:#34d399;
+  --green-soft:#d1fae5;
+  --purple:#a78bfa;
+  --purple-soft:#ede9fe;
+  --red:#ef4444;
+  --red-soft:#fee2e2;
+
+  --text:#1f2937;
+  --text-strong:#111827;
+  --text-muted:#6b7280;
+  --text-light:#9ca3af;
+
+  --border:#fef3c7;
+  --border-soft:#fef9c3;
+  --border-strong:#fcd34d;
+  --border-gray:#e5e7eb;
+
+  --shadow-xs:0 1px 3px rgba(0,0,0,.04);
+  --shadow-sm:0 2px 8px rgba(180,140,40,.08);
+  --shadow-md:0 8px 24px rgba(180,140,40,.1);
+  --shadow-lg:0 16px 48px rgba(0,0,0,.08);
+  --shadow-yellow:0 8px 24px rgba(251,191,36,.25);
+  --shadow-orange:0 8px 24px rgba(251,146,60,.3);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 15% 20%,rgba(13,61,74,.6),transparent 45%),radial-gradient(circle at 85% 75%,rgba(26,13,61,.7),transparent 50%),radial-gradient(circle at 50% 50%,rgba(123,47,247,.08),transparent 60%),#0a0e1a}
-body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px}
+html,body{font-family:'Noto Sans TC','Hiragino Sans','Yu Gothic',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.7}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 60% 40% at 100% 0%,rgba(252,211,77,.35),transparent 70%),
+    radial-gradient(ellipse 80% 50% at 0% 100%,rgba(254,215,170,.25),transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 50%,rgba(255,237,213,.2),transparent 70%),
+    var(--bg);
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(251,191,36,.06) 1px,transparent 1px);
+  background-size:30px 30px;
+}
 
-.dashboard{padding:2rem 2.5rem 4rem;max-width:1400px;margin:0 auto}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
-.brand{display:flex;align-items:center;gap:.8rem}
-.brand-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(123,47,247,.3)}
-.brand-text h1{font-family:'Orbitron',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.08em;background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-.brand-text p{font-size:.7rem;color:var(--muted);letter-spacing:.05em}
-.version-badge{display:flex;align-items:center;gap:.5rem;padding:.5rem .9rem;background:var(--glass-bg);backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:999px;font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
-.version-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+.dashboard{padding:2rem 2.5rem 5rem;max-width:1300px;margin:0 auto}
 
-.hero{margin-bottom:2.5rem;padding:2rem;background:var(--glass-bg);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:20px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(0,212,255,.15),transparent 60%);pointer-events:none}
-.hero h2{font-family:'Orbitron',sans-serif;font-weight:700;font-size:1.4rem;margin-bottom:.6rem;letter-spacing:.05em;position:relative}
-.hero p{color:var(--muted);font-size:.85rem;line-height:1.7;max-width:760px;position:relative}
-.hero .new-badge{display:inline-block;margin-top:1rem;padding:.35rem .8rem;background:linear-gradient(135deg,rgba(255,184,77,.2),rgba(255,107,157,.2));border:1px solid rgba(255,184,77,.4);border-radius:999px;font-size:.7rem;color:var(--amber);letter-spacing:.08em;position:relative}
+/* Topbar */
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;padding:.5rem 0}
+.brand{display:flex;align-items:center;gap:.9rem}
+.brand-mark{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-yellow)}
+.brand-text h1{font-weight:900;font-size:1.15rem;letter-spacing:.02em;color:var(--text-strong)}
+.brand-text p{font-size:.72rem;color:var(--text-muted);margin-top:.1rem}
+.version-badge{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:999px;font-size:.72rem;color:var(--text-muted);box-shadow:var(--shadow-xs)}
+.version-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
 
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+/* Hero */
+.hero{margin-bottom:2rem;padding:2.5rem 2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:24px;position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+.hero::before{content:'';position:absolute;top:0;right:0;width:300px;height:100%;background:radial-gradient(circle at 70% 50%,rgba(252,211,77,.18),transparent 70%);pointer-events:none}
+.hero h2{font-weight:900;font-size:1.6rem;margin-bottom:.7rem;color:var(--text-strong);position:relative;line-height:1.4}
+.hero h2 .accent-bar{display:inline-block;width:8px;height:1.2em;background:linear-gradient(180deg,var(--primary),var(--accent));border-radius:4px;margin-right:.6rem;vertical-align:-2px}
+.hero p{color:var(--text-muted);font-size:.92rem;line-height:1.85;max-width:760px;position:relative}
+.hero .new-badge{display:inline-flex;align-items:center;gap:.35rem;margin-top:1.1rem;padding:.4rem .9rem;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:999px;font-size:.75rem;color:#fff;font-weight:700;box-shadow:var(--shadow-yellow);position:relative}
+
+/* Onboarding hero card */
+.onboarding{margin-bottom:2rem;background:linear-gradient(135deg,#fff8de,#fef3c7);border:2px solid var(--border-strong);border-radius:24px;padding:2rem 2.2rem;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+.onboarding::before{content:'';position:absolute;top:-30px;right:-30px;width:200px;height:200px;background:radial-gradient(circle,rgba(251,146,60,.15),transparent 70%);pointer-events:none}
+.onboarding-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.onboarding-emoji{font-size:2.5rem;flex-shrink:0;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.onboarding-title{font-size:1.35rem;font-weight:900;color:var(--text-strong);line-height:1.4}
+.onboarding-subtitle{font-size:.85rem;color:var(--text-muted);margin-top:.2rem}
+.onboarding-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+@media(max-width:900px){.onboarding-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.onboarding-steps{grid-template-columns:1fr}}
+.onboarding-step{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1rem;cursor:pointer;transition:all .25s;position:relative;display:flex;flex-direction:column;gap:.4rem}
+.onboarding-step:hover{transform:translateY(-3px);border-color:var(--primary);box-shadow:var(--shadow-md)}
+.onboarding-step-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-yellow)}
+.onboarding-step-emoji{font-size:1.4rem;line-height:1}
+.onboarding-step-title{font-size:.88rem;font-weight:700;color:var(--text-strong);line-height:1.4}
+.onboarding-step-desc{font-size:.72rem;color:var(--text-muted);line-height:1.55}
+
+/* Section grid */
+.section-label{font-size:.78rem;color:var(--text-muted);font-weight:700;letter-spacing:.05em;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.section-label::before{content:'';width:4px;height:14px;background:var(--primary);border-radius:2px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2rem}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.grid{grid-template-columns:1fr}.dashboard{padding:1.5rem 1rem}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.dashboard{padding:1.5rem 1rem 4rem}}
 
-.card{position:relative;background:var(--glass-bg);backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:18px;padding:1.5rem;cursor:pointer;transition:all .3s cubic-bezier(.2,.8,.2,1);overflow:hidden}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s}
-.card:hover{transform:translateY(-4px);border-color:rgba(0,212,255,.3);box-shadow:0 12px 40px rgba(0,212,255,.15)}
-.card:hover::before{opacity:1}
-.card.featured{border-color:rgba(255,184,77,.3);background:linear-gradient(135deg,rgba(255,184,77,.06),var(--glass-bg))}
-.card.featured::after{content:'NEW';position:absolute;top:1rem;right:1rem;padding:.2rem .5rem;background:linear-gradient(135deg,var(--amber),var(--pink));font-size:.6rem;font-weight:700;border-radius:4px;letter-spacing:.1em;color:#000}
-.card-icon{width:44px;height:44px;border-radius:12px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.card-title{font-weight:700;font-size:1rem;margin-bottom:.3rem}
-.card-sub{font-family:'Orbitron',sans-serif;font-size:.65rem;color:var(--cyan);letter-spacing:.15em;margin-bottom:.6rem;text-transform:uppercase}
-.card-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.card{position:relative;background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:1.5rem;cursor:pointer;transition:all .3s cubic-bezier(.2,.8,.2,1);overflow:hidden;box-shadow:var(--shadow-xs)}
+.card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:var(--shadow-md)}
+.card.featured{background:linear-gradient(135deg,#fffbed,#fff8de);border-color:var(--border-strong)}
+.card.featured::after{content:'NEW';position:absolute;top:1rem;right:1rem;padding:.2rem .55rem;background:linear-gradient(135deg,var(--accent),var(--accent-dark));font-size:.6rem;font-weight:900;border-radius:999px;letter-spacing:.1em;color:#fff;box-shadow:var(--shadow-orange)}
+.card-icon{width:48px;height:48px;border-radius:14px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--primary-dark)}
+.card-sub{font-size:.65rem;color:var(--accent);letter-spacing:.15em;margin-bottom:.5rem;text-transform:uppercase;font-weight:700}
+.card-title{font-weight:900;font-size:1.05rem;margin-bottom:.4rem;color:var(--text-strong)}
+.card-desc{font-size:.78rem;color:var(--text-muted);line-height:1.6}
+.card-tag{display:inline-block;font-size:.62rem;padding:.15rem .5rem;border-radius:4px;margin-top:.6rem;letter-spacing:.05em;font-weight:600}
+.card-tag.beginner{background:var(--green-soft);color:#047857}
+.card-tag.intermediate{background:var(--blue-soft);color:#1e40af}
+.card-tag.advanced{background:var(--purple-soft);color:#5b21b6}
+.card-tag.admin{background:var(--bg-soft);color:var(--primary-dark)}
 
 /* Modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:300;padding:2rem;animation:fadeIn .25s}
+.modal-overlay{position:fixed;inset:0;background:rgba(31,41,55,.5);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:300;padding:1.5rem;animation:fadeIn .25s}
 .modal-overlay.show{display:flex}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{background:rgba(15,20,35,.85);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid var(--glass-border);border-radius:20px;padding:2rem 2.2rem;max-width:1000px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.7);animation:slideUp .3s cubic-bezier(.2,.8,.2,1)}
+.modal{background:var(--bg-card);border-radius:24px;padding:2rem 2.2rem;max-width:1000px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:slideUp .3s cubic-bezier(.2,.8,.2,1);border:1px solid var(--border)}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--glass-border);position:sticky;top:0;background:rgba(15,20,35,.85);backdrop-filter:blur(20px);z-index:5;margin:-2rem -2.2rem 1.5rem;padding:2rem 2.2rem 1.2rem;border-radius:20px 20px 0 0}
-.modal-title{font-family:'Orbitron',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:.05em;background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-.modal-sub{font-size:.7rem;color:var(--muted);letter-spacing:.1em;margin-top:.2rem}
-.modal-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--glass-border);color:var(--muted);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.modal-close:hover{background:rgba(255,107,157,.15);border-color:var(--pink);color:var(--pink)}
+.modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border);position:sticky;top:0;background:var(--bg-card);z-index:5;margin:-2rem -2.2rem 1.5rem;padding:2rem 2.2rem 1.2rem;border-radius:24px 24px 0 0}
+.modal-title{font-weight:900;font-size:1.3rem;color:var(--text-strong)}
+.modal-sub{font-size:.7rem;color:var(--text-muted);letter-spacing:.1em;margin-top:.2rem}
+.modal-close{width:36px;height:36px;border-radius:50%;background:var(--bg-soft);border:none;color:var(--primary-dark);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{background:var(--primary);color:#fff;transform:rotate(90deg)}
 
-.tabs{display:flex;gap:.4rem;margin-bottom:1.5rem;flex-wrap:wrap;padding:.4rem;background:rgba(0,0,0,.25);border-radius:12px;border:1px solid var(--glass-border)}
-.tab{padding:.55rem 1rem;background:transparent;border:none;color:var(--muted);font-family:inherit;font-size:.75rem;border-radius:8px;cursor:pointer;transition:all .2s;letter-spacing:.03em}
+/* Tabs */
+.tabs{display:flex;gap:.4rem;margin-bottom:1.2rem;flex-wrap:wrap;padding:.4rem;background:var(--bg-soft);border-radius:14px}
+.tab{padding:.6rem 1rem;background:transparent;border:none;color:var(--text-muted);font-family:inherit;font-size:.78rem;border-radius:10px;cursor:pointer;transition:all .2s;font-weight:600}
 .tab:hover{color:var(--text)}
-.tab.active{background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(123,47,247,.15));color:var(--cyan);box-shadow:inset 0 0 0 1px rgba(0,212,255,.3)}
+.tab.active{background:var(--bg-card);color:var(--text-strong);box-shadow:var(--shadow-xs)}
 
-.section-intro{padding:.9rem 1.1rem;background:linear-gradient(90deg,rgba(0,212,255,.06),transparent);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;margin-bottom:1.2rem}
-.section-intro h4{font-size:.85rem;color:var(--cyan);margin-bottom:.3rem;font-weight:700}
-.section-intro p{font-size:.75rem;color:var(--muted);line-height:1.7}
+.section-intro{padding:1rem 1.2rem;background:var(--bg-section);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;margin-bottom:1.2rem}
+.section-intro h4{font-size:.95rem;color:var(--text-strong);margin-bottom:.4rem;font-weight:900}
+.section-intro p{font-size:.8rem;color:var(--text-muted);line-height:1.7}
 
 /* Generic content card */
-.c-card{background:rgba(255,255,255,.03);border:1px solid var(--glass-border);border-radius:14px;padding:1.1rem 1.3rem;margin-bottom:.9rem;transition:all .25s}
-.c-card:hover{border-color:rgba(0,212,255,.25);background:rgba(255,255,255,.05)}
-.c-meta{display:flex;align-items:center;gap:.5rem;font-size:.65rem;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;flex-wrap:wrap}
-.c-tag{padding:.15rem .5rem;background:rgba(0,212,255,.1);border-radius:4px;font-family:'JetBrains Mono',monospace}
-.c-tag.year{color:var(--green);background:rgba(77,255,180,.1)}
-.c-tag.green{color:var(--green);background:rgba(77,255,180,.1)}
-.c-tag.amber{color:var(--amber);background:rgba(255,184,77,.1)}
-.c-tag.red{color:var(--red);background:rgba(255,85,119,.1)}
-.c-tag.violet{color:var(--violet);background:rgba(123,47,247,.15)}
-.c-title{font-weight:700;font-size:.95rem;line-height:1.5;margin-bottom:.4rem}
-.c-authors{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:.4rem}
-.c-journal{font-size:.72rem;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-bottom:.7rem}
-.c-summary{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:.8rem;padding:.6rem .8rem;background:rgba(0,0,0,.2);border-radius:8px;border-left:2px solid rgba(0,212,255,.4)}
-.c-summary strong{color:var(--cyan);font-weight:600}
+.c-card{background:var(--bg-card);border:1px solid var(--border-gray);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:.9rem;transition:all .2s}
+.c-card:hover{border-color:var(--primary);box-shadow:var(--shadow-sm)}
+.c-meta{display:flex;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem;flex-wrap:wrap}
+.c-tag{padding:.2rem .55rem;background:var(--bg-soft);color:var(--primary-dark);border-radius:6px;font-weight:700}
+.c-tag.year{background:var(--green-soft);color:#047857}
+.c-tag.green{background:var(--green-soft);color:#047857}
+.c-tag.amber{background:var(--bg-soft);color:var(--primary-dark)}
+.c-tag.red{background:var(--red-soft);color:#b91c1c}
+.c-tag.violet{background:var(--purple-soft);color:#6d28d9}
+.c-title{font-weight:900;font-size:1rem;line-height:1.5;margin-bottom:.4rem;color:var(--text-strong)}
+.c-authors{font-size:.78rem;color:var(--text-muted);font-style:italic;margin-bottom:.4rem}
+.c-journal{font-size:.72rem;color:var(--text-light);font-family:'JetBrains Mono','Consolas',monospace;margin-bottom:.7rem}
+.c-summary{font-size:.8rem;color:var(--text);line-height:1.75;margin-bottom:.8rem;padding:.7rem .9rem;background:var(--bg-section);border-radius:10px;border-left:3px solid var(--primary)}
+.c-summary strong{color:var(--accent-dark);font-weight:700}
 .c-actions{display:flex;gap:.5rem;flex-wrap:wrap}
-.c-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .75rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:6px;color:var(--cyan);font-size:.7rem;text-decoration:none;cursor:pointer;font-family:inherit;transition:all .2s}
-.c-btn:hover{background:rgba(0,212,255,.18);border-color:var(--cyan)}
-.c-btn.copy{color:var(--pink);background:rgba(255,107,157,.08);border-color:rgba(255,107,157,.2)}
-.c-btn.copy:hover{background:rgba(255,107,157,.18);border-color:var(--pink)}
-.c-btn.unavailable{color:var(--dim);background:rgba(255,255,255,.03);border-color:var(--glass-border);cursor:default}
+.c-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .85rem;background:var(--bg-soft);border:1px solid var(--border-strong);border-radius:8px;color:var(--primary-dark);font-size:.72rem;text-decoration:none;cursor:pointer;font-family:inherit;font-weight:700;transition:all .2s}
+.c-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.c-btn.copy{color:var(--accent-dark);background:#fff7ed;border-color:#fdba74}
+.c-btn.copy:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.c-btn.unavailable{color:var(--text-light);background:#f9fafb;border-color:var(--border-gray);cursor:default}
 
-.c-card.flagship{background:linear-gradient(135deg,rgba(255,184,77,.05),rgba(255,107,157,.03));border-color:rgba(255,184,77,.25);position:relative}
-.c-card.flagship::before{content:'★ FLAGSHIP';position:absolute;top:-8px;right:1rem;background:linear-gradient(135deg,var(--amber),var(--pink));color:#000;font-size:.6rem;font-weight:900;padding:.15rem .5rem;border-radius:4px;letter-spacing:.1em}
+.c-card.flagship{background:linear-gradient(135deg,#fffbed,#fff8de);border-color:var(--border-strong);position:relative}
+.c-card.flagship::before{content:'★ FLAGSHIP';position:absolute;top:-10px;right:1rem;background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;font-size:.6rem;font-weight:900;padding:.2rem .55rem;border-radius:6px;letter-spacing:.1em;box-shadow:var(--shadow-orange)}
 
 .c-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1.5rem}
 @media(max-width:600px){.c-stats{grid-template-columns:repeat(2,1fr)}}
-.c-stat{padding:.9rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;text-align:center}
-.c-stat-num{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.4rem;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
-.c-stat-label{font-size:.65rem;color:var(--muted);letter-spacing:.1em;margin-top:.2rem}
+.c-stat{padding:1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;text-align:center;box-shadow:var(--shadow-xs)}
+.c-stat-num{font-weight:900;font-size:1.5rem;color:var(--accent-dark)}
+.c-stat-label{font-size:.68rem;color:var(--text-muted);letter-spacing:.05em;margin-top:.2rem;font-weight:600}
 
 /* Faculty videos */
 .video-group{margin-bottom:1.5rem}
-.video-group-title{font-size:.85rem;font-weight:700;color:var(--cyan);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
-.video-group-title::before{content:'';width:4px;height:14px;background:var(--cyan);border-radius:2px;display:inline-block}
+.video-group-title{font-size:.9rem;font-weight:900;color:var(--text-strong);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.video-group-title::before{content:'';width:5px;height:18px;background:linear-gradient(180deg,var(--primary),var(--accent));border-radius:3px;display:inline-block}
 .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
 @media(max-width:600px){.video-grid{grid-template-columns:1fr}}
-.video-card{padding:.9rem 1rem;background:rgba(255,255,255,.03);border:1px solid var(--glass-border);border-radius:10px;cursor:pointer;transition:all .25s;display:flex;align-items:flex-start;gap:.7rem}
-.video-card:hover{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.05);transform:translateX(2px)}
-.video-icon{width:34px;height:34px;flex-shrink:0;border-radius:8px;background:rgba(0,212,255,.12);display:flex;align-items:center;justify-content:center;color:var(--cyan)}
+.video-card{padding:1rem 1.1rem;background:var(--bg-card);border:1px solid var(--border-gray);border-radius:12px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:.7rem;text-decoration:none;color:inherit}
+.video-card:hover{border-color:var(--primary);background:var(--bg-cream);transform:translateX(2px);box-shadow:var(--shadow-sm)}
+.video-icon{width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
 .video-meta{flex:1;min-width:0}
-.video-date{font-size:.65rem;color:var(--dim);font-family:'JetBrains Mono',monospace;letter-spacing:.05em}
-.video-title{font-size:.78rem;color:var(--text);line-height:1.5;margin-top:.2rem;font-weight:500}
-.video-speaker{margin-top:.45rem;padding-top:.45rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:.4rem;font-size:.7rem;flex-wrap:wrap}
-.video-speaker-avatar{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.6rem;flex-shrink:0}
-.video-speaker-name{color:var(--text);font-weight:600}
-.video-speaker-pos{color:var(--muted)}
-.video-speaker-aff{color:var(--dim);font-size:.66rem}
-.video-speaker.tbd .video-speaker-name,.video-speaker.tbd .video-speaker-pos,.video-speaker.tbd .video-speaker-aff{color:var(--dim);font-style:italic}
-.video-speaker.tbd .video-speaker-avatar{background:rgba(255,255,255,.1);color:var(--dim)}
+.video-date{font-size:.65rem;color:var(--text-light);font-family:'JetBrains Mono',monospace;letter-spacing:.05em;font-weight:600}
+.video-title{font-size:.82rem;color:var(--text-strong);line-height:1.5;margin-top:.2rem;font-weight:700}
+.video-speaker{margin-top:.5rem;padding-top:.5rem;border-top:1px dashed var(--border-gray);display:flex;align-items:center;gap:.4rem;font-size:.7rem;flex-wrap:wrap}
+.video-speaker-avatar{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.62rem;flex-shrink:0;box-shadow:var(--shadow-xs)}
+.video-speaker-name{color:var(--text-strong);font-weight:700}
+.video-speaker-pos{color:var(--text-muted)}
+.video-speaker-aff{color:var(--text-light);font-size:.66rem}
 
 /* Steps for Teams transcript */
-.step{display:flex;gap:1rem;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px dashed rgba(255,255,255,.1)}
+.step{display:flex;gap:1rem;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px dashed var(--border)}
 .step:last-child{border-bottom:none}
-.step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet));display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:.9rem;color:#fff;box-shadow:0 4px 16px rgba(0,212,255,.3)}
+.step-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;color:#fff;box-shadow:var(--shadow-yellow)}
 .step-body{flex:1}
-.step-title{font-size:.9rem;font-weight:700;margin-bottom:.3rem;color:var(--text)}
-.step-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:.5rem}
-.step-tip{padding:.5rem .7rem;background:rgba(77,255,180,.06);border-left:2px solid var(--green);border-radius:0 6px 6px 0;font-size:.72rem;color:var(--green);line-height:1.6;margin-top:.5rem}
-.step-warn{padding:.5rem .7rem;background:rgba(255,184,77,.06);border-left:2px solid var(--amber);border-radius:0 6px 6px 0;font-size:.72rem;color:var(--amber);line-height:1.6;margin-top:.5rem}
+.step-title{font-size:.95rem;font-weight:900;margin-bottom:.3rem;color:var(--text-strong)}
+.step-desc{font-size:.82rem;color:var(--text);line-height:1.75;margin-bottom:.5rem}
+.step-tip{padding:.6rem .85rem;background:var(--green-soft);border-left:3px solid var(--green);border-radius:0 8px 8px 0;font-size:.76rem;color:#065f46;line-height:1.65;margin-top:.5rem}
+.step-warn{padding:.6rem .85rem;background:#fef3c7;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-size:.76rem;color:#92400e;line-height:1.65;margin-top:.5rem}
 
 /* CCC matrix */
-.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-bottom:1.2rem}
+.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-bottom:1.2rem}
 @media(max-width:600px){.matrix{grid-template-columns:1fr}}
-.matrix-cell{padding:1rem 1.1rem;background:rgba(255,255,255,.03);border:1px solid var(--glass-border);border-radius:12px;border-left-width:4px}
-.matrix-cell.ontrack{border-left-color:var(--green)}
-.matrix-cell.watch{border-left-color:var(--amber)}
-.matrix-cell.concern{border-left-color:#ff8855}
-.matrix-cell.atrisk{border-left-color:var(--red)}
-.matrix-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
-.matrix-cell.ontrack .matrix-label{color:var(--green)}
-.matrix-cell.watch .matrix-label{color:var(--amber)}
-.matrix-cell.concern .matrix-label{color:#ff8855}
-.matrix-cell.atrisk .matrix-label{color:var(--red)}
-.matrix-desc{font-size:.75rem;color:var(--muted);line-height:1.6}
+.matrix-cell{padding:1.1rem 1.2rem;background:var(--bg-card);border:1px solid var(--border-gray);border-radius:14px;border-left-width:5px;box-shadow:var(--shadow-xs)}
+.matrix-cell.ontrack{border-left-color:var(--green);background:#f0fdf4}
+.matrix-cell.watch{border-left-color:var(--primary);background:#fffbeb}
+.matrix-cell.concern{border-left-color:var(--accent);background:#fff7ed}
+.matrix-cell.atrisk{border-left-color:var(--red);background:#fef2f2}
+.matrix-label{font-size:.75rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem}
+.matrix-cell.ontrack .matrix-label{color:#047857}
+.matrix-cell.watch .matrix-label{color:var(--primary-dark)}
+.matrix-cell.concern .matrix-label{color:var(--accent-dark)}
+.matrix-cell.atrisk .matrix-label{color:#b91c1c}
+.matrix-desc{font-size:.78rem;color:var(--text);line-height:1.65}
 
 /* Dept reference grid */
 .dept-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem}
 @media(max-width:600px){.dept-grid{grid-template-columns:1fr}}
-.dept-row{display:flex;align-items:center;justify-content:space-between;padding:.7rem .9rem;background:rgba(255,255,255,.03);border:1px solid var(--glass-border);border-radius:10px;gap:.7rem}
-.dept-row:hover{border-color:rgba(0,212,255,.25);background:rgba(255,255,255,.05)}
+.dept-row{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem;background:var(--bg-card);border:1px solid var(--border-gray);border-radius:12px;gap:.7rem}
+.dept-row:hover{border-color:var(--primary);background:var(--bg-cream)}
 .dept-info{flex:1;min-width:0}
-.dept-name{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.15rem}
-.dept-society{font-size:.66rem;color:var(--dim);line-height:1.4}
-.dept-status{flex-shrink:0;font-size:.62rem;padding:.2rem .5rem;border-radius:999px;letter-spacing:.05em;font-weight:600}
-.dept-status.adopted{background:rgba(77,255,180,.12);color:var(--green);border:1px solid rgba(77,255,180,.3)}
-.dept-status.trial{background:rgba(255,184,77,.12);color:var(--amber);border:1px solid rgba(255,184,77,.3)}
-.dept-status.drafting{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.3)}
-.dept-status.none{background:rgba(255,85,119,.12);color:var(--red);border:1px solid rgba(255,85,119,.3)}
-.dept-link{flex-shrink:0;color:var(--cyan);opacity:.7;transition:opacity .2s}
-.dept-link:hover{opacity:1}
+.dept-name{font-size:.85rem;font-weight:700;color:var(--text-strong);margin-bottom:.15rem}
+.dept-society{font-size:.68rem;color:var(--text-muted);line-height:1.4}
+.dept-status{flex-shrink:0;font-size:.65rem;padding:.25rem .6rem;border-radius:999px;letter-spacing:.05em;font-weight:700}
+.dept-status.adopted{background:var(--green-soft);color:#047857}
+.dept-status.trial{background:var(--bg-soft);color:var(--primary-dark)}
+.dept-status.drafting{background:var(--blue-soft);color:#1e40af}
+.dept-status.none{background:var(--red-soft);color:#b91c1c}
+.dept-link{flex-shrink:0;color:var(--accent);transition:opacity .2s;display:flex;align-items:center}
+.dept-link:hover{color:var(--accent-dark)}
 
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);padding:.8rem 1.4rem;background:rgba(15,20,35,.95);backdrop-filter:blur(20px);border:1px solid var(--green);border-radius:10px;color:var(--green);font-size:.8rem;z-index:500;transition:transform .3s cubic-bezier(.2,.8,.2,1);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+/* Toast */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120px);padding:.85rem 1.5rem;background:var(--text-strong);color:#fff;border-radius:12px;font-size:.82rem;font-weight:600;z-index:500;transition:transform .3s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-lg)}
 .toast.show{transform:translateX(-50%) translateY(0)}
+.toast.success{background:var(--green);color:#fff}
+.toast.warn{background:var(--accent);color:#fff}
+.toast.error{background:var(--red);color:#fff}
 
-footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--glass-border);text-align:center;color:var(--dim);font-size:.7rem;letter-spacing:.05em}
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center;color:var(--text-light);font-size:.72rem;letter-spacing:.02em;line-height:1.7}
 
-/* Framework table for CBME concept */
-.framework-table{width:100%;border-collapse:separate;border-spacing:0;margin-bottom:1rem;font-size:.78rem}
-.framework-table th,.framework-table td{padding:.7rem .8rem;border-bottom:1px solid var(--glass-border);text-align:left}
-.framework-table th{background:rgba(0,212,255,.08);color:var(--cyan);font-weight:700;font-size:.72rem;letter-spacing:.05em}
-.framework-table tr:hover td{background:rgba(255,255,255,.02)}
-.framework-table td:first-child{color:var(--text);font-weight:600}
+/* Framework table */
+.framework-table{width:100%;border-collapse:separate;border-spacing:0;margin-bottom:1rem;font-size:.8rem;background:var(--bg-card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-xs)}
+.framework-table th,.framework-table td{padding:.8rem 1rem;border-bottom:1px solid var(--border);text-align:left}
+.framework-table th{background:var(--bg-soft);color:var(--primary-dark);font-weight:900;font-size:.75rem;letter-spacing:.05em}
+.framework-table tr:hover td{background:var(--bg-section)}
+.framework-table td:first-child{color:var(--text-strong);font-weight:700}
+.framework-table tr:last-child td{border-bottom:none}
 
 /* Pyramid */
-.pyramid{display:flex;flex-direction:column;align-items:center;gap:.4rem;margin:1rem 0}
-.pyramid-level{padding:.7rem 1.2rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);border-radius:10px;text-align:center;font-size:.78rem;transition:all .25s}
-.pyramid-level:hover{background:rgba(0,212,255,.15);transform:scale(1.02)}
-.pyramid-level .level-en{font-family:'Orbitron',sans-serif;font-weight:700;color:var(--cyan);font-size:.7rem;letter-spacing:.1em;display:block;margin-bottom:.1rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin:1.2rem 0}
+.pyramid-level{padding:.8rem 1.2rem;border-radius:12px;text-align:center;font-size:.82rem;transition:all .25s;border:1px solid}
+.pyramid-level:hover{transform:scale(1.02);box-shadow:var(--shadow-sm)}
+.pyramid-level .level-en{font-weight:900;font-size:.72rem;letter-spacing:.1em;display:block;margin-bottom:.15rem}
 .pyramid-level .level-zh{color:var(--text);font-size:.78rem}
-.pyramid-level:nth-child(1){width:35%;border-color:rgba(255,107,157,.4);background:rgba(255,107,157,.06)}
-.pyramid-level:nth-child(1) .level-en{color:var(--pink)}
-.pyramid-level:nth-child(2){width:55%;border-color:rgba(255,184,77,.4);background:rgba(255,184,77,.06)}
-.pyramid-level:nth-child(2) .level-en{color:var(--amber)}
-.pyramid-level:nth-child(3){width:75%;border-color:rgba(123,47,247,.4);background:rgba(123,47,247,.08)}
-.pyramid-level:nth-child(3) .level-en{color:var(--violet)}
-.pyramid-level:nth-child(4){width:90%;border-color:rgba(77,255,180,.4);background:rgba(77,255,180,.06)}
-.pyramid-level:nth-child(4) .level-en{color:var(--green)}
+.pyramid-level:nth-child(1){width:35%;background:var(--pink-soft);border-color:#f9a8d4}
+.pyramid-level:nth-child(1) .level-en{color:#be185d}
+.pyramid-level:nth-child(2){width:55%;background:var(--bg-soft);border-color:#fcd34d}
+.pyramid-level:nth-child(2) .level-en{color:var(--primary-dark)}
+.pyramid-level:nth-child(3){width:75%;background:var(--purple-soft);border-color:#c4b5fd}
+.pyramid-level:nth-child(3) .level-en{color:#6d28d9}
+.pyramid-level:nth-child(4){width:90%;background:var(--green-soft);border-color:#86efac}
+.pyramid-level:nth-child(4) .level-en{color:#047857}
+
+/* CBME 4-Layer concept cards */
+.layer-header{padding:1.2rem 1.4rem;background:linear-gradient(135deg,#fff8de,#fef3c7);border:2px solid var(--border-strong);border-radius:16px;margin-bottom:1.4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.layer-badge{flex-shrink:0;width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem;color:#fff;box-shadow:var(--shadow-yellow);letter-spacing:.05em}
+.layer-meta{flex:1;min-width:200px}
+.layer-meta-label{font-size:.7rem;color:var(--accent-dark);letter-spacing:.1em;text-transform:uppercase;font-weight:900;margin-bottom:.25rem}
+.layer-meta-audience{font-size:.95rem;font-weight:900;color:var(--text-strong);margin-bottom:.25rem}
+.layer-meta-goal{font-size:.78rem;color:var(--text-muted);line-height:1.55}
+
+.concept-card{background:var(--bg-card);border:1px solid var(--border-gray);border-radius:16px;padding:1.5rem 1.6rem;margin-bottom:1rem;transition:all .25s;position:relative;box-shadow:var(--shadow-xs)}
+.concept-card:hover{border-color:var(--primary);box-shadow:var(--shadow-sm)}
+.concept-num{position:absolute;top:-12px;left:1.2rem;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.78rem;color:#fff;box-shadow:var(--shadow-yellow);letter-spacing:.02em}
+.concept-title{font-weight:900;font-size:1.05rem;line-height:1.5;margin-bottom:.85rem;margin-top:.4rem;padding-left:2.6rem;color:var(--text-strong)}
+
+.concept-plain{margin-bottom:1rem;padding:1rem 1.2rem;background:linear-gradient(135deg,#f0fdf4,#ecfccb);border:1px solid #bbf7d0;border-radius:12px;position:relative}
+.concept-plain::before{content:'💡 白話版';position:absolute;top:-9px;left:1rem;background:var(--green);color:#fff;font-size:.65rem;font-weight:900;padding:.2rem .6rem;border-radius:6px;letter-spacing:.05em}
+.concept-plain-body{font-size:.88rem;line-height:1.85;color:var(--text);font-weight:500;padding-top:.3rem}
+.concept-plain-body strong{color:#047857;font-weight:700}
+
+.concept-academic-label{display:flex;align-items:center;gap:.5rem;font-size:.7rem;color:var(--text-muted);font-weight:700;letter-spacing:.05em;margin-bottom:.6rem;padding-top:.5rem}
+.concept-academic-label::before{content:'📚';font-size:.9rem}
+
+.concept-body{font-size:.82rem;line-height:1.85;color:var(--text);margin-bottom:.9rem}
+.concept-body p{margin-bottom:.6rem}
+.concept-body p:last-child{margin-bottom:0}
+.concept-body strong{color:var(--accent-dark);font-weight:700}
+.concept-body em{font-style:italic;color:var(--primary-dark)}
+.concept-body sup{color:var(--accent);font-weight:900;font-size:.7em;padding:0 .15em;cursor:help}
+.concept-body sup:hover{color:var(--accent-dark)}
+.concept-body code{background:var(--bg-soft);color:var(--primary-dark);padding:.1rem .4rem;border-radius:5px;font-family:'JetBrains Mono','Consolas',monospace;font-size:.85em;font-weight:600}
+
+.concept-memo{padding:.7rem 1rem;background:var(--bg-soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;margin:.8rem 0;font-size:.82rem;color:#92400e;line-height:1.7}
+.concept-memo strong{color:#7c2d12;font-weight:900}
+
+.concept-visual{margin:.9rem 0;padding:1rem 1.2rem;background:var(--bg-section);border:1px dashed var(--border-strong);border-radius:12px}
+
+.concept-refs{margin-top:1rem;padding:.9rem 1.1rem;background:var(--purple-soft);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;font-size:.74rem;line-height:1.7}
+.concept-refs-label{font-size:.68rem;color:#5b21b6;letter-spacing:.08em;text-transform:uppercase;font-weight:900;margin-bottom:.5rem}
+.concept-refs ol{list-style:none;counter-reset:refnum;padding-left:0}
+.concept-refs li{counter-increment:refnum;position:relative;padding-left:1.8em;margin-bottom:.4rem;color:#4c1d95}
+.concept-refs li::before{content:counter(refnum);position:absolute;left:0;top:0;color:var(--purple);font-weight:900;font-size:.85em;width:1.5em;text-align:left;font-family:'JetBrains Mono',monospace}
+.concept-refs em{color:var(--text);font-style:italic;font-weight:600}
+.concept-refs a{color:var(--purple);text-decoration:underline;text-decoration-style:dotted}
+.concept-refs a:hover{color:#5b21b6;text-decoration-style:solid}
+
+/* Glossary floating button */
+.glossary-fab{position:fixed;bottom:2rem;right:2rem;display:flex;align-items:center;gap:.5rem;padding:.85rem 1.3rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;border-radius:999px;font-family:inherit;font-size:.85rem;font-weight:900;cursor:pointer;box-shadow:var(--shadow-orange);transition:all .25s;z-index:200}
+.glossary-fab:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(251,146,60,.4)}
+.glossary-fab svg{width:18px;height:18px}
+
+/* Glossary side panel */
+.glossary-panel{position:fixed;top:0;right:0;width:420px;max-width:90vw;height:100vh;background:var(--bg-card);box-shadow:-12px 0 48px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);z-index:400;display:flex;flex-direction:column;border-left:1px solid var(--border)}
+.glossary-panel.show{transform:translateX(0)}
+.glossary-header{padding:1.3rem 1.5rem;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:linear-gradient(135deg,#fff8de,#fef3c7)}
+.glossary-title{font-weight:900;font-size:1.05rem;color:var(--text-strong);display:flex;align-items:center;gap:.5rem}
+.glossary-search{padding:0 1.5rem;padding-top:1rem;flex-shrink:0}
+.glossary-search input{width:100%;padding:.7rem 1rem;background:var(--bg-section);border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:.85rem;color:var(--text)}
+.glossary-search input:focus{outline:none;border-color:var(--primary);background:var(--bg-card);box-shadow:0 0 0 3px rgba(251,191,36,.15)}
+.glossary-list{flex:1;overflow-y:auto;padding:1rem 1.5rem 2rem}
+.glossary-item{padding:1rem 1.1rem;background:var(--bg-section);border:1px solid var(--border);border-radius:12px;margin-bottom:.7rem;transition:all .2s}
+.glossary-item:hover{border-color:var(--primary);background:var(--bg-card);box-shadow:var(--shadow-xs)}
+.glossary-abbr{font-weight:900;font-size:1rem;color:var(--accent-dark);margin-bottom:.15rem;letter-spacing:.02em}
+.glossary-en{font-size:.74rem;color:var(--text-muted);font-style:italic;margin-bottom:.35rem}
+.glossary-zh{font-size:.85rem;color:var(--text-strong);font-weight:700;margin-bottom:.35rem}
+.glossary-desc{font-size:.78rem;color:var(--text);line-height:1.65}
+.glossary-empty{text-align:center;padding:3rem 1rem;color:var(--text-light);font-size:.85rem}
+
+/* Onboarding steps modal */
+.ob-step-content{padding:.5rem 0}
+.ob-step-emoji-big{font-size:3rem;margin-bottom:.7rem;text-align:center}
+.ob-section{margin-bottom:1.5rem}
+.ob-section-title{font-weight:900;font-size:1rem;color:var(--text-strong);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.ob-quote{padding:1rem 1.2rem;background:var(--bg-soft);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;font-size:.95rem;line-height:1.8;color:var(--text-strong);font-weight:600;margin:.7rem 0}
+.ob-quote strong{color:var(--accent-dark)}
+.ob-list{list-style:none;padding:0;margin:.5rem 0}
+.ob-list li{padding:.7rem .9rem;background:var(--bg-card);border:1px solid var(--border-gray);border-radius:10px;margin-bottom:.5rem;font-size:.85rem;line-height:1.7}
+.ob-list li strong{color:var(--accent-dark);font-weight:900}
+.ob-role-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.6rem}
+@media(max-width:600px){.ob-role-grid{grid-template-columns:1fr}}
+.ob-role{padding:1rem 1.1rem;background:var(--bg-card);border:1px solid var(--border-gray);border-radius:12px;cursor:pointer;transition:all .2s}
+.ob-role:hover{border-color:var(--primary);background:var(--bg-cream);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.ob-role-emoji{font-size:1.6rem;margin-bottom:.4rem}
+.ob-role-name{font-size:.88rem;font-weight:900;color:var(--text-strong);margin-bottom:.3rem}
+.ob-role-path{font-size:.74rem;color:var(--text-muted);line-height:1.6}
+.ob-role-path strong{color:var(--accent-dark)}
+
+/* Department CCC Charter cards */
+.dept-charter-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+@media(max-width:700px){.dept-charter-grid{grid-template-columns:1fr}}
+.dept-charter-card{background:var(--bg-card);border:1px solid var(--border-gray);border-radius:14px;padding:1.2rem 1.3rem;transition:all .2s;border-left-width:4px}
+.dept-charter-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.dept-charter-card.dept-color-red{border-left-color:var(--red)}
+.dept-charter-card.dept-color-blue{border-left-color:var(--blue)}
+.dept-charter-card.dept-color-pink{border-left-color:var(--pink)}
+.dept-charter-card.dept-color-green{border-left-color:var(--green)}
+.dept-charter-card.dept-color-amber{border-left-color:var(--primary-dark)}
+.dept-charter-card.dept-color-cyan{border-left-color:#06b6d4}
+.dept-charter-card.dept-color-violet{border-left-color:var(--purple)}
+.dept-charter-header{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.7rem;padding-bottom:.6rem;border-bottom:1px dashed var(--border-gray)}
+.dept-charter-name{font-weight:900;font-size:1rem;color:var(--text-strong)}
+.dept-charter-date{font-size:.66rem;color:var(--text-light);font-family:'JetBrains Mono',monospace;flex-shrink:0;text-align:right}
+.dept-charter-meta{margin-bottom:.7rem}
+.dept-charter-meta-row{display:flex;gap:.6rem;margin-bottom:.3rem;font-size:.74rem;line-height:1.5}
+.dept-charter-meta-key{flex-shrink:0;width:54px;color:var(--text-muted);font-weight:700;letter-spacing:.05em}
+.dept-charter-meta-row span:not(.dept-charter-meta-key){color:var(--text);flex:1}
+.dept-charter-highlights{padding-top:.6rem;border-top:1px dashed var(--border-gray)}
+.dept-charter-highlights-label{font-size:.66rem;color:var(--accent-dark);letter-spacing:.05em;font-weight:900;margin-bottom:.4rem;text-transform:uppercase}
+.dept-charter-highlights ul{list-style:none;padding-left:0;margin:0}
+.dept-charter-highlights li{font-size:.75rem;line-height:1.65;color:var(--text);padding:.2rem 0 .2rem 1em;position:relative}
+.dept-charter-highlights li::before{content:'▸';position:absolute;left:0;color:var(--primary-dark);font-weight:900}
+.dept-charter-highlights li strong{color:var(--accent-dark)}
+
 </style>
 </head>
 <body>
@@ -194,28 +384,31 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--glass-borde
   <div class="topbar">
     <div class="brand">
       <div class="brand-mark">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2L2 7l10 5 10-5-10-5z"/>
           <path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
         </svg>
       </div>
       <div class="brand-text">
-        <h1>CBME NAVIGATOR</h1>
-        <p>Competency-Based Medical Education Hub</p>
+        <h1>CBME 資源導航平台</h1>
+        <p>能力導向醫學教育 · 臨床能力委員會手冊</p>
       </div>
     </div>
     <div class="version-badge">
       <span class="version-dot"></span>
-      <span>v3.1 · Full Edition</span>
+      <span>v3.2 · 完整版</span>
     </div>
   </div>
 
   <div class="hero">
-    <h2>CBME 臨床教師資源平台 📚</h2>
-    <p>整合 CBME 基礎概念、科部推展案例、CCC 規章與決策矩陣、奇美院內師培演講影片、Teams 逐字稿操作指引，以及 ACGME CCC Guidebook 第三版（2020）+ 全院 25 個醫師職類科部與 11 個醫事職類公版 EPA 對照表。一處查找、一站到位。</p>
-    <span class="new-badge">v3.1 · 加入 ACGME CCC 30+ 篇核心文獻</span>
+    <h2><span class="accent-bar"></span>CBME 臨床教師資源平台</h2>
+    <p>整合 CBME 基礎概念、科部推展案例、CCC 規章與決策矩陣、奇美院內師培演講影片、Teams 逐字稿操作指引，以及 ACGME CCC Guidebook 第三版（2020）+ 全院 25 個醫師職類科部與 11 個醫事職類公版 EPA 對照表。</p>
+    <span class="new-badge">✨ v3.2 新增白話導覽 · 詞彙速查 · 角色路徑</span>
   </div>
 
+  <div id="onboarding-card" class="onboarding"></div>
+
+  <div class="section-label">📂 完整功能區塊</div>
   <div id="grid" class="grid"></div>
 
   <footer>
@@ -228,9 +421,83 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--glass-borde
   <div class="modal" id="modal-content"></div>
 </div>
 
+
+<button class="glossary-fab" onclick="toggleGlossary()" title="開啟詞彙速查">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+  </svg>
+  <span>詞彙速查</span>
+</button>
+
+<div id="glossary-panel" class="glossary-panel">
+  <div class="glossary-header">
+    <div class="glossary-title">📖 CBME 詞彙速查</div>
+    <button class="modal-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input id="glossary-search-input" type="text" placeholder="搜尋縮寫、中文、關鍵字…" oninput="filterGlossary(this.value)">
+  </div>
+  <div id="glossary-list" class="glossary-list"></div>
+</div>
+
 <div id="toast" class="toast"></div>
 
 <script>
+
+const ONBOARDING_STEPS = [
+  { num:1, emoji:'🎯', title:'CBME 是什麼？', shortDesc:'一句話搞懂典範轉移' },
+  { num:2, emoji:'🔤', title:'四個必懂的詞', shortDesc:'Competency / Milestone / EPA / Entrustment' },
+  { num:3, emoji:'🧭', title:'你的角色路徑', shortDesc:'我是誰？該看哪些區塊？' },
+  { num:4, emoji:'🚀', title:'第一個動作', shortDesc:'看完導覽後該做什麼' }
+];
+
+const GLOSSARY = [
+  { abbr:'CBME', en:'Competency-Based Medical Education', zh:'能力導向醫學教育', desc:'醫學教育的典範轉移：從「時間到了就出師」變成「能力到了才出師」。以可觀察的能力為訓練目標。' },
+  { abbr:'ACGME', en:'Accreditation Council for Graduate Medical Education', zh:'美國畢業後醫學教育認證委員會', desc:'美國 GME（住院醫師訓練）制度的最高認證機構。其發布的 Common Program Requirements 是台灣許多醫院制定 CBME 制度時的參考。' },
+  { abbr:'CCC', en:'Clinical Competency Committee', zh:'臨床能力委員會', desc:'由至少 3 位臨床教師組成的學員能力評議會。每半年至少召開一次，整合多元評核資料判定 milestone 進展。' },
+  { abbr:'EPA', en:'Entrustable Professional Activity', zh:'可委任專業活動', desc:'可放心交給學員獨立完成的臨床任務單元。如「執行知情同意」「主持交班」。回答「我放不放心讓他做這件事」。' },
+  { abbr:'Milestone', en:'Milestone', zh:'里程碑', desc:'描述能力發展軌跡上可辨識的點。Level 1–5 對應從「剛入訓練」到「專家級」。Level 4 是獨立執業門檻。' },
+  { abbr:'WBA', en:'Workplace-Based Assessment', zh:'工作場域評量', desc:'在實際臨床工作中進行的評核，是 Miller\'s Pyramid 最頂層 Does 的具體實踐。包含 Mini-CEX、DOPS、CbD、MSF。' },
+  { abbr:'Mini-CEX', en:'Mini Clinical Evaluation Exercise', zh:'迷你臨床評核', desc:'觀察學員一次完整看診（病史、檢查、診斷、衛教）。整合性最強的 WBA 工具。Norcini 1995 提出。' },
+  { abbr:'DOPS', en:'Direct Observation of Procedural Skills', zh:'直接觀察操作技術', desc:'觀察學員一項臨床操作（插管、超音波、置中央靜脈導管等）。英國 RCP 2003 提出。' },
+  { abbr:'CbD', en:'Case-based Discussion', zh:'病例討論評核', desc:'圍繞學員所負責的病例做臨床推理討論，評估診斷思考、治療決策、文獻應用能力。' },
+  { abbr:'MSF', en:'Multi-Source Feedback', zh:'多源回饋（360 度回饋）', desc:'從多面向（同儕、護理、病人、行政）收集對學員的評核。適合溝通、團隊合作、professionalism 等難以單獨觀察的能力。' },
+  { abbr:'ILP', en:'Individualized Learning Plan', zh:'個別化學習計畫', desc:'學員與導師共擬的個人學習目標。包含 SMART 目標、學習資源、時程。所有學員都應有，不只給 At-risk 學員。' },
+  { abbr:'R2C2', en:'Relationship, Reactions, Content, Coach', zh:'結構化回饋四階段模型', desc:'Sargeant 2018 提出：建立關係 → 探索反應 → 確認內容 → 共擬計畫。ACGME Guidebook 推薦。' },
+  { abbr:'ADAPT', en:'Ask-Discuss-Ask-Plan-Together', zh:'簡潔回饋四步驟', desc:'另一個 ACGME 推薦的回饋模型：問學員想法 → 討論觀察 → 再問澄清 → 共擬計畫。比 R2C2 簡潔。' },
+  { abbr:'MAL', en:'Master Adaptive Learner', zh:'終身適應學習者', desc:'Cutrer 2017 提出。CBME 的最終目標：訓練出能持續自我規劃 → 學習 → 評估 → 調整的醫師。' },
+  { abbr:'TMAC', en:'Taiwan Medical Accreditation Council', zh:'臺灣醫學院評鑑委員會', desc:'台灣醫學系評鑑機構。評鑑基準將 CBME 落實列入要求，是國內醫學院與教學醫院的最高認證標準。' },
+  { abbr:'PGY', en:'Post-Graduate Year', zh:'畢業後一般醫學訓練', desc:'醫學系畢業後的兩年通才訓練。衛福部「臨床醫事人員培訓計畫」的核心階段。' },
+  { abbr:'UGY', en:'Under-Graduate Year', zh:'醫學系臨床實習階段', desc:'指醫學系五、六、七年級的臨床實習。包含 Clerkship 與 Internship。' },
+  { abbr:'DIO', en:'Designated Institutional Official', zh:'指定機構主管', desc:'ACGME 制度下醫院 GME 的最高負責人，協調與監督機構內所有訓練計畫。台灣多由教學部主任或副院長兼任。' },
+  { abbr:'GMEC', en:'Graduate Medical Education Committee', zh:'畢業後醫學教育委員會', desc:'機構級別的住院醫師訓練監督委員會，由 DIO 主持。負責跨科部品質管理。' },
+  { abbr:'PEC', en:'Program Evaluation Committee', zh:'訓練計畫評估委員會', desc:'各訓練計畫每年自我評估的委員會。負責年度 Annual Program Evaluation（APE）。與 CCC 並列為 ACGME 要求的兩個核心委員會。' },
+  { abbr:'AAMC', en:'Association of American Medical Colleges', zh:'美國醫學院協會', desc:'美國醫學院的全國性組織。其發布的 13 Core EPAs for Entering Residency 被全球廣泛引用為畢業前評核標準。' },
+  { abbr:'CPR', en:'Common Program Requirements', zh:'共同訓練計畫要求', desc:'ACGME 對所有住院醫師訓練計畫的共同要求文件。CCC 的法源依據在 Section V.A.3。' },
+  { abbr:'PPV', en:'Predictive Probability Value', zh:'預測機率值', desc:'ACGME 2019 Milestones 全國報告中的指標，協助 CCC 識別 milestone 發展軌跡偏離預期的學員。' },
+  { abbr:'OSCE', en:'Objective Structured Clinical Examination', zh:'客觀結構式臨床測驗', desc:'多站式標準化模擬病人臨床測驗。對應 Miller\'s Pyramid 第三層 Shows How。' },
+  { abbr:'IOM', en:'Institute of Medicine', zh:'美國醫學研究院', desc:'1999 年發表《To Err Is Human》報告，估計每年 44,000–98,000 名美國病人因可預防的醫療錯誤死亡，催生系統性醫學教育改革。' }
+];
+
+const PLAIN_INTROS = {
+  '01': '<strong>過去訓練醫師看年資</strong>（內科 PGY 訓練 3 年就出師），<strong>CBME 改成看能力</strong>（達到能獨立處理常見問題才出師）。簡單說：以前看時鐘，現在看本事。',
+  '02': '<strong>為什麼現在要推 CBME？</strong> 三個現實壓力：①錯誤的醫療傷害太多（每年數萬人死於可預防的醫療錯誤）、②醫學知識太爆炸（5–7 年翻一倍，傳統訓練裝不下）、③社會要結果不要學歷。',
+  '03': '<strong>四個關鍵詞分工</strong>：Competency 是「能做什麼」、Milestone 是「成長到哪一步」、EPA 是「可以放心讓他做的任務」、Entrustment 是「我放不放心」這個動詞。<strong>記住口訣：Milestone 看人、EPA 看事</strong>。',
+  '04': '<strong>評核要看四層</strong>：知道（筆試）、會用（案例題）、會做（OSCE）、實際在做（工作場域）。<strong>CBME 把重點放在最頂層的「實際在做」</strong>。',
+  '05': '<strong>看不同能力用不同工具</strong>。整合表現用 Mini-CEX、技術操作用 DOPS、推理判斷用 CbD、團隊行為用 MSF。<strong>不要全部都用 Mini-CEX 打發</strong>。',
+  '06': '<strong>單一份評核都不可靠</strong>（會有偏見、會誤判），<strong>但累積很多份不同類型的評核就可靠了</strong>。CBME 不是改表單，是改思維——從「評核一次定生死」變「持續累積看軌跡」。',
+  '07': '<strong>為什麼一定要 CCC 群組討論？</strong>因為個人寫的書面評核常漏掉問題，但大家一起討論能挖出來。這不是猜測，2004 年外科研究、2000 年內科研究都明確證實。',
+  '08': '<strong>學員會不會接受您的回饋，重點不是您講得多好，而是他信不信任您</strong>。先建立關係，再講內容。這個道理顛覆了過去「直接講重點」的回饋哲學。',
+  '09': '<strong>給回饋要有結構，不能只說「你要再加油」</strong>。R2C2（建關係 → 探反應 → 講內容 → 擬計畫）或 ADAPT（問 → 討論 → 問 → 共擬）擇一熟練即可。',
+  '10': '<strong>ILP 不是「給有問題的學員寫的補強計畫」</strong>。每位學員都該有自己的學習計畫，差別只是優秀的學員寫成長型 ILP，需要加強的學員寫補強型 ILP。',
+  '11': '<strong>訓練醫師不是教完就結束</strong>，目標是訓練出能自己規劃、自己學習、自己檢視、自己調整的醫師。<strong>畢業是新階段的開始，不是結束</strong>。',
+  '12': '<strong>評核會有偏見，不是道德問題，是人性</strong>。研究發現急診女性住院醫師被打分系統性低於男性、且差距隨年資擴大。CCC 要警覺、要看自家數據、要有意識地對抗。',
+  '13': '<strong>CBME 推不動的真正原因不是表單設計爛，是教師沒被訓練好</strong>。把錢花在訓練教師，不要花在更精細的表單。表單再漂亮，沒人會用都是廢紙。',
+  '14': '<strong>處理學員不及格、不續聘、退訓等事，要有三件事</strong>：①明確告知缺失、②給改善機會、③審慎評議。CCC 紀錄寫得詳細是為了萬一上法院能證明過程合理。',
+  '15': '<strong>國外文獻不會教您的台灣特殊問題</strong>：TMAC 評鑑要求、衛福部 PGY 框架、各專科學會公版進度不一、健保時間壓力擠壓教學空間。'
+};
+
 const SECTIONS = [
   { key:'cbme',     title:'CBME 基礎概念', sub:'Core Framework',  desc:'Miller\'s Pyramid、AAMC 13 Core EPAs、Chen 五階委任量尺、Milestone L1–5' },
   { key:'depts',    title:'科部推展案例',  sub:'Dept. Practices', desc:'院內各科部與職類 CBME 落地經驗，可篩選比對' },
@@ -301,15 +568,144 @@ const CCC_DECISION = [
     desc:'核心 milestone 嚴重落後或專業行為有疑慮。<strong>處置：</strong>啟動 Remediation Pathway，正式書面通知（notice）+ 改善期（opportunity to cure）+ CCC 定期審查。涉及學術正當程序，需與教學部、人資、法務部會商。' }
 ];
 
-const CCC_CHARTER = [
-  { item:'委員會組成', detail:'至少 3 位 program faculty members，其中至少 1 位為 core faculty。建議 5–7 人為理想規模（最多 8–10 人）。可邀請護理、藥師、社工等多職類代表加入以增加多樣性。' },
-  { item:'主席選任', detail:'由 program director 或科部主任指派。<strong>美國麻醉學會明訂 program director 不得擔任 CCC 主席</strong>，台灣可參考此原則避免角色衝突。建議由副主任、教學負責人或資深主治醫師擔任。' },
-  { item:'開會頻率', detail:'<strong>至少每半年一次（必要）</strong>，建議每季召開以利及時介入。每次會議建議涵蓋全體住院醫師，或可採 sub-CCC（依年資分組）方式分批進行。' },
-  { item:'資料準備', detail:'會前應整理：(1) 各輪訓評核資料、(2) Mini-CEX/DOPS/CbD/MSF 結果、(3) 病歷審查記錄、(4) 學員自評、(5) 360 度回饋。建議使用 dashboard 視覺化呈現。' },
-  { item:'決策方式', detail:'<strong>強烈建議「共識決」而非投票</strong>（依 ACGME 2020 Guidebook 建議）。意見分歧時延長討論，由主席引導 junior members 先發言以對抗階層效應。最終 milestone 評等由 program director 決定。' },
-  { item:'紀錄保存', detail:'會議紀錄須包含：與會者、討論摘要（去識別化或代號）、各學員 milestone 評等、決議與追蹤事項、ILP 啟動與否。依機構政策保存（建議至少 5 年），與法務、人資諮詢檔案處理。' },
-  { item:'回饋傳達', detail:'會後 2 週內完成個別回饋。建議採 R2C2 模型（Build Relationship → Explore Reactions → Confirm Content → Coach for change）或 ADAPT 模型（Ask-Discuss-Ask-Plan Together），並於會談紀錄中留下 ILP 與下次追蹤事項。' }
+const CCC_PRINCIPLES = [
+  { item:'法源依據', detail:'依 <strong>ACGME Clinical Competency Committee 共同規範</strong> + 衛福部「後疫情世代專科醫師訓練品質精進計畫」+ 院內教學部規範三層共構。本院 7 個醫師科部已制定 CCC 章程。' },
+  { item:'委員組成', detail:'本院 7 科部委員人數從 <strong>5 人</strong>（急診、神外）到 <strong>16 人</strong>（婦產）不等。<strong>核心要求：至少 3 位委員，含至少 1 位核心教師</strong>。多元成員是趨勢——影像醫學部納入 1 位護理組長與 2 位醫事放射師主管，急診部可邀請護理/藥師/心理師/律師為諮詢委員。' },
+  { item:'開會頻率', detail:'<strong>半年一次為基本</strong>（急診、影像、家醫、婦產、兒科）；<strong>季度進行為精進方向</strong>（外科部、神外採用）。每年至少 2 次是 ACGME 必要要求。' },
+  { item:'評核形式', detail:'<strong>6+4 模式</strong>已成本院趨勢——受評者 6 分鐘口頭報告（第 5 分鐘提醒），委員 4 分鐘講評，每位醫師 10 分鐘內完成（婦產、兒科、神外採用）。較傳統審閱式更具互動性與時間效率。' },
+  { item:'評核工具', detail:'本院普遍採用：① <strong>EPA 抽查與完成度</strong>（婦產、兒科明列）、② 主刀/操作技術紀錄、③ 360 度多源回饋、④ 文獻閱讀與研究進度、⑤ 學會發表規劃、⑥ 個人讀書計畫。<strong>外科部、家醫部更納入「數位賦能」與「醫學人文」評估</strong>。' },
+  { item:'決策方式', detail:'<strong>共識決為原則</strong>，意見分歧時過半數出席委員同意通過（急診、外科明定）。<strong>最終決策權在訓練計畫主持人/科部主任</strong>，CCC 角色為建議。委員應主動迴避利害關係個案。' },
+  { item:'補強機制', detail:'<strong>未通過 → 啟動補強計畫 → 1 個月內重新評核</strong>是本院共通機制（婦產、兒科明列）。<strong>兒科部明確使用「個別化輔導計畫（Individualized Remediation Plan）」</strong>名詞。外科部設定三階段流程：追蹤評估 → 定期報告 → 結案評估。' },
+  { item:'公平性與申訴', detail:'<strong>申訴保障</strong>是本院章程共同要件——受評者得於收到回饋後一定期限內提出申訴，由非原評估委員的獨立教師重新審閱（外科、家醫、急診均明訂）。委員會評核結果保密，不公開個人評價內容。' },
+  { item:'紀錄保存', detail:'會議紀錄含與會者、討論摘要、評定結果與決議事項。<strong>急診部明定保存至訓練結束後滿 3 年</strong>。各科部紀錄歸檔至教學中心或 RRC 負責人，作為晉級、推薦學會報告、研究發表及畢業條件之重要參考。' }
 ];
+
+const HOSPITAL_CCC_DEPTS = [
+  {
+    name:'急診醫學部',
+    full:'急診醫學部臨床能力委員會 (CCC) 組織章程',
+    date:'',
+    members:'5 位委員（含至少 1 位核心教師）',
+    freq:'每半年一次',
+    chair:'由委員推選召集人（非部主任指派）',
+    color:'red',
+    highlights:[
+      '可邀請護理師、藥師、心理師、律師、教育學者為<strong>「諮詢委員」</strong>降低偏差',
+      '委員任期 <strong>4 年</strong>得連任',
+      '現任住院醫師不得擔任委員（避免利益衝突）',
+      '人事主管列席不得在討論伊始即發表意見',
+      '<strong>紀錄保存至訓練結束後滿 3 年</strong>（本院唯一明定）'
+    ]
+  },
+  {
+    name:'影像醫學部',
+    full:'住院醫師臨床能力委員會 (CCC) 組織章程',
+    date:'112 年 12 月制定',
+    members:'8 位（5 次專科主任 + 1 護理組長 + 2 醫事放射師主管）',
+    freq:'每半年一次',
+    chair:'由部長指派',
+    color:'blue',
+    highlights:[
+      '<strong>本院唯一明確納入「醫事放射師主管」為正式委員</strong>的科部',
+      '次專科涵蓋：肌肉骨骼、胸腔乳房、神經、介入性、腹部影像',
+      '設「總幹事」一名協助處理委員會業務（獨特）',
+      '委員任期 1 年得連任',
+      '討論議題所需列席人員由主席決定邀請'
+    ]
+  },
+  {
+    name:'婦產部',
+    full:'婦產部臨床能力評估委員會 (CCC) 施行辦法',
+    date:'114 年 6 月制定',
+    members:'16 位（部長 + 4 主任 + 2 顧問 + 9 醫師）',
+    freq:'每半年一次',
+    chair:'蔡永杰部長',
+    color:'pink',
+    highlights:[
+      '<strong>本院最大規模 CCC（16 位委員）</strong>',
+      '採 <strong>6+4 報告講評模式</strong>（6 分鐘報告 + 4 分鐘講評）',
+      '評核表 10 項含 <strong>EPA 完成度與整體表現 (10%)</strong>',
+      '評核通過由 RRC 負責人簽章認證',
+      '未通過 → 強化輔導 + 1 個月內重新評核'
+    ]
+  },
+  {
+    name:'外科部',
+    full:'外科部臨床能力評估委員會施行辦法（草案）',
+    date:'草案 114/05/22',
+    members:'主任委員 + 次專科主任 + 教學中心代表 + 數位賦能負責人 + 醫學人文代表 + 行政人員',
+    freq:'每季一次（每年 4 次）',
+    chair:'外科部主任或指派之資深主治醫師',
+    color:'green',
+    highlights:[
+      '<strong>本院最詳細的章程（12 條）</strong>',
+      '<strong>納入「數位醫療與資訊運用」評估</strong>（AI 工具、telehealth）',
+      '<strong>納入「醫學人文」評估</strong>（同理心、文化敏感、醫學倫理）',
+      '受評對象包含住院醫師 + 總醫師（CR）',
+      '完整三階段補強流程：追蹤評估 → 定期報告 → 結案評估',
+      '完整申訴機制：由非原評估委員的獨立教師重新審閱'
+    ]
+  },
+  {
+    name:'家庭醫學科',
+    full:'家庭醫學科臨床能力評估委員會施行辦法',
+    date:'',
+    members:'訓練計畫主持人 + 部長 + 次專科主任 + 各分項教學負責醫師 + 行政人員',
+    freq:'每半年一次',
+    chair:'訓練計畫主持人',
+    color:'amber',
+    highlights:[
+      '採用 <strong>ACGME 六大核心能力 + 里程碑</strong>',
+      '評核工具完整：EPA、Mini-CEX、DOPS、<strong>家庭訪視評量表</strong>',
+      '評估指向家醫科特色：<strong>整合性照護、社區資源連結、慢性病管理、預防醫學</strong>',
+      '指派「長期照護」「社區醫學」「數位賦能」分項教學負責醫師',
+      '每季彙整共通問題提供教學主管調整訓練計畫'
+    ]
+  },
+  {
+    name:'兒科部',
+    full:'兒科部臨床能力評估委員會 (CCC) 施行辦法',
+    date:'114/11/05 制定',
+    members:'部長（召集人）+ 8 位次專科主任 + RRC 負責人',
+    freq:'每半年一次',
+    chair:'周琪部長',
+    color:'cyan',
+    highlights:[
+      '採 <strong>6+4 報告講評模式</strong>',
+      '<strong>系統性 EPA 抽查機制</strong>：CCC 委員抽樣審查每月 EPA 評核表，同時驗證教師評核執行狀況',
+      '未通過 → 啟動「<strong>個別化輔導計畫（Individualized Remediation Plan）</strong>」',
+      '次專科涵蓋：新生兒、感染、心臟、神經、腎臟、內分泌、急重症'
+    ]
+  },
+  {
+    name:'神經外科',
+    full:'神經外科臨床能力評估委員會 (CCC) 施行辦法',
+    date:'Ver 1.0 · 2025/05/10 制定 · 5/21 實施',
+    members:'5 位（主任 + 教學中心主任 + 脊椎外科主任 + 一般醫學外科主任 + 資深主治）',
+    freq:'每季一次（每年 4 次）',
+    chair:'陳志偉部主任',
+    color:'violet',
+    highlights:[
+      '採 <strong>6+4 報告講評模式</strong>',
+      '<strong>附 10 項評估表 + 各項權重百分比</strong>（主刀手術 20%、學術活動 20%、論文進度 10%）',
+      '評估涵蓋：主刀手術、學術活動、文獻、研究計畫、自評獨立手術、併發症反思、學會報告、論文投稿、個人讀書計畫',
+      '<strong>明確版本管理（Ver 1.0）</strong>',
+      '指定醫師陳昱廷負責實施與文件管理'
+    ]
+  }
+];
+
+const CCC_CHARTER = {
+  allied: [
+    { item:'委員會組成', detail:'至少 <strong>3 位該職類的核心臨床指導者</strong>（如護理督導、技術長、資深專業人員、教學組長）。建議邀請<strong>跨職類代表</strong>（醫師、其他醫事職類）增加多元視角。各職類核心指導者依該職類全聯會公版定義。' },
+    { item:'主席選任', detail:'通常由<strong>該職類最高主管擔任</strong>：護理部督導長、藥劑部主任、復健部技術長、醫事檢驗組長等。或由科部教學負責人擔任。重點是熟悉該職類臨床實務 + 教學評核經驗。' },
+    { item:'開會頻率', detail:'<strong>至少每半年一次</strong>（同醫師職類原則），建議與<strong>該職類在職教育/年度核心職能評核時程連動</strong>，提升行政效率。' },
+    { item:'資料準備（評核工具）', detail:'會前應整理：(1) 各全聯會<strong>公版核心職能評核表</strong>、(2) 工作場域實作觀察、(3) 多源回饋（含病人滿意度、跨職類同事評核）、(4) 在職教育時數、(5) 個案討論/case study。<strong>注意：各職類評核工具差異大</strong>——護理用 core competency assessment、藥師用 clinical pharmacy practice review、物理治療師有 EPA 委任等級。' },
+    { item:'決策方式', detail:'同醫師職類，建議<strong>共識決</strong>。重要差異：<strong>跨職類成員的意見要被認真納入</strong>，避免「只有醫師說了算」的歷史慣性。最終決定權在該職類最高主管或科部主任。' },
+    { item:'紀錄保存', detail:'同醫師職類原則。<strong>醫事職類涉及執照註冊與在職時數</strong>，紀錄需與人資/教育訓練系統可對接，便於後續證照延展與專業時數認列。' },
+    { item:'回饋傳達', detail:'同醫師職類，建議結構化模型（R2C2 / ADAPT）。重要：<strong>回饋者最好為該職類資深成員</strong>（增加 educational alliance）。涉及跨職類觀察時（如醫師對護理的回饋），要妥善處理「<strong>專業位階預設</strong>」可能帶來的偏見。' }
+  ]
+};
 
 const DEPTS_MEDICAL = [
   // 西醫
@@ -620,15 +1016,51 @@ const LITERATURE = {
 // ============ RENDER FUNCTIONS ============
 
 function renderDashboard(){
-  const grid = document.getElementById('grid');
-  grid.innerHTML = SECTIONS.map(s=>`
-    <div class="card ${s.featured?'featured':''}" onclick="openSection('${s.key}')">
-      <div class="card-icon">${ICONS[s.key]}</div>
-      <div class="card-sub">${s.sub}</div>
-      <div class="card-title">${s.title}</div>
-      <div class="card-desc">${s.desc}</div>
+  // Render onboarding card
+  const ob = document.getElementById('onboarding-card');
+  ob.innerHTML = `
+    <div class="onboarding-header">
+      <div class="onboarding-emoji">🚀</div>
+      <div>
+        <div class="onboarding-title">第一次接觸 CBME？五分鐘快速入門</div>
+        <div class="onboarding-subtitle">不需要醫學教育背景也能看懂，建議按順序看完四步</div>
+      </div>
     </div>
-  `).join('');
+    <div class="onboarding-steps">
+      ${ONBOARDING_STEPS.map(s=>`
+        <div class="onboarding-step" onclick="openOnboardingStep(${s.num})">
+          <div class="onboarding-step-num">${s.num}</div>
+          <div class="onboarding-step-emoji">${s.emoji}</div>
+          <div class="onboarding-step-title">${s.title}</div>
+          <div class="onboarding-step-desc">${s.shortDesc}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  // Render section grid
+  const grid = document.getElementById('grid');
+  grid.innerHTML = SECTIONS.map(s=>{
+    const tagMap = {
+      cbme:    { cls:'beginner', txt:'入門必讀' },
+      depts:   { cls:'intermediate', txt:'進階參考' },
+      ccc:     { cls:'intermediate', txt:'CCC 委員必讀' },
+      faculty: { cls:'beginner', txt:'入門 / 進階' },
+      docless: { cls:'admin', txt:'行政實作' },
+      lit:     { cls:'advanced', txt:'深入文獻' }
+    };
+    const tag = tagMap[s.key];
+    return `
+      <div class="card ${s.featured?'featured':''}" onclick="openSection('${s.key}')">
+        <div class="card-icon">${ICONS[s.key]}</div>
+        <div class="card-sub">${s.sub}</div>
+        <div class="card-title">${s.title}</div>
+        <div class="card-desc">${s.desc}</div>
+        <span class="card-tag ${tag.cls}">${tag.txt}</span>
+      </div>
+    `;
+  }).join('');
+  // Render glossary list
+  renderGlossaryList(GLOSSARY);
 }
 
 function openSection(key){
@@ -659,38 +1091,319 @@ function closeModal(){
 }
 
 // ---- CBME 基礎概念 ----
+const CBME_LAYERS = {
+  layer1: {
+    badge: 'L1',
+    label: '第一層 · 必懂的「為什麼」',
+    audience: '所有臨床教師',
+    goal: '建立 CBME 典範感與基本詞彙；能用 4 個關鍵詞與同事討論',
+    concepts: [
+      {
+        num: '01',
+        title: '典範轉移 — 從時間到結果（Outcome-based）',
+        body: `<p>CBME 的核心是把訓練從「時間到了就出師」變成「能力到了才出師」。Carraccio 2002 年的奠基論文第一次有系統地把這個轉變放到醫學教育的歷史脈絡——從 1910 年 Flexner 報告以來的「結構/過程」典範，正在被「成果/能力」典範取代<sup>1</sup>。</p>
+        <p>Frank 等人 2010 年系統性回顧 173 篇文獻後給出 CBME 的工作定義：<strong>「以能力為基礎組織起來的醫學教育，目標是培養出符合社會與病人需求的醫師」</strong><sup>2</sup>。Hodges 以「茶壺浸泡 vs i-Doc」對比點出時間制訓練在資訊爆炸下的失效<sup>3</sup>。</p>`,
+        refs: [
+          { txt: 'Carraccio C, Wolfsthal SD, Englander R, Ferentz K, Martin C. Shifting paradigms: from Flexner to competencies. <em>Acad Med.</em> 2002;77(5):361-367.', link:'https://journals.lww.com/academicmedicine/Fulltext/2002/05000/Shifting_Paradigms__From_Flexner_to_Competencies.3.aspx'},
+          { txt: 'Frank JR, Snell LS, ten Cate O, et al. Competency-based medical education: theory to practice. <em>Med Teach.</em> 2010;32(8):638-645.', link:'https://www.tandfonline.com/doi/abs/10.3109/0142159X.2010.501190'},
+          { txt: 'Hodges BD. A tea-steeping or i-doc model for medical education? <em>Acad Med.</em> 2010;85(9 Suppl):S34-S44.', link:'https://journals.lww.com/academicmedicine/Fulltext/2010/09001/A_Tea_Steeping_or_i_Doc_Model_for_Medical.10.aspx'}
+        ]
+      },
+      {
+        num: '02',
+        title: '為什麼現在要推 CBME — 三個推力',
+        body: `<p>三個現實壓力把醫學教育推向 CBME：</p>
+        <p><strong>① 病人安全</strong>：1999 年 IOM <em>To Err Is Human</em> 報告估計每年 44,000–98,000 名美國病人因可預防的醫療錯誤死亡<sup>1</sup>，催生了系統性的醫學教育改革要求。</p>
+        <p><strong>② 醫學知識指數成長</strong>：Densen 估算醫學知識每 5–7 年翻倍<sup>2</sup>，靠時間制訓練無法保證能力。</p>
+        <p><strong>③ 社會問責（social accountability）</strong>：社會大眾要求「會看病的醫師」而非「念過書的醫師」，必須能用具體成果回答。</p>`,
+        refs: [
+          { txt: 'Kohn LT, Corrigan JM, Donaldson MS, eds. <em>To Err Is Human: Building a Safer Health System.</em> Institute of Medicine. National Academies Press; 2000.', link:'https://nap.nationalacademies.org/catalog/9728/to-err-is-human-building-a-safer-health-system' },
+          { txt: 'Densen P. Challenges and opportunities facing medical education. <em>Trans Am Clin Climatol Assoc.</em> 2011;122:48-58.', link:'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3116346/' }
+        ]
+      },
+      {
+        num: '03',
+        title: 'CBME 的「字母表」— 四個基本詞彙',
+        body: `<p>Competency / Milestone / EPA / Entrustment 是 CBME 的字母表。混了之後再多 SOP 都會變形式主義：</p>
+        <p>• <strong>Competency（能力）</strong> = 可被觀察、可被評核的行為，不是「素養」「態度」這種抽象概念<sup>1</sup>。</p>
+        <p>• <strong>Milestone（里程碑）</strong> = 描述「<em>人</em>」沿著時間軸的能力發展軌跡，回答「Level 2 的人長什麼樣子」<sup>2</sup>。</p>
+        <p>• <strong>EPA（可委任專業活動）</strong> = 描述「<em>事</em>」的可放心程度，是可以託付給學員獨立完成的臨床任務單元<sup>3</sup>。</p>
+        <p>• <strong>Entrustment（委任）</strong> = 教師判斷「我放不放心讓他自己做這件事」的決策動詞<sup>4</sup>。</p>`,
+        memo: '記憶口訣：<strong>Milestone 看人，EPA 看事</strong>。兩者搭配才完整。',
+        visual: 'epaList',
+        refs: [
+          { txt: 'Frank JR, Mungroo R, Ahmad Y, Wang M, De Rossi S, Horsley T. Toward a definition of competency-based education in medicine: a systematic review of published definitions. <em>Med Teach.</em> 2010;32(8):631-637.', link:'https://www.tandfonline.com/doi/abs/10.3109/0142159X.2010.500898' },
+          { txt: 'Holmboe ES, Edgar L, Hamstra S. <em>The Milestones Guidebook.</em> Accreditation Council for Graduate Medical Education; 2016.', link:'https://www.acgme.org/Portals/0/MilestonesGuidebook.pdf' },
+          { txt: 'ten Cate O. Entrustability of professional activities and competency-based training. <em>Med Educ.</em> 2005;39(12):1176-1177.', link:'https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2929.2005.02341.x' },
+          { txt: 'ten Cate O, Hart D, Ankel F, et al. Entrustment Decision Making in Clinical Training. <em>Acad Med.</em> 2016;91(2):191-198.', link:'https://journals.lww.com/academicmedicine/fulltext/2016/02000/entrustment_decision_making_in_clinical_training.21.aspx' }
+        ]
+      }
+    ]
+  },
+  layer2: {
+    badge: 'L2',
+    label: '第二層 · 評核基本功',
+    audience: 'CCC 委員與帶教師',
+    goal: '會選工具、會看 milestone、知道為什麼群組決策比個人評核可靠',
+    concepts: [
+      {
+        num: '04',
+        title: "Miller's Pyramid — 評核設計的金字塔",
+        body: `<p>Miller 1990 年在 <em>Academic Medicine</em> 發表的金字塔，至今仍是 CBME 評核設計的指南針<sup>1</sup>。下三層（Knows / Knows How / Shows How）對應筆試與 OSCE，最頂層 <strong>Does</strong> 才是真實工作場域的表現。</p>
+        <p>CBME 的革命就是把評核重心從金字塔下三層拉到最頂層的 <strong>Does</strong>，這也是為什麼 CCC 必須整合工作場域評量資料，而不是只看考試成績。</p>`,
+        visual: 'pyramid',
+        refs: [
+          { txt: "Miller GE. The assessment of clinical skills/competence/performance. <em>Acad Med.</em> 1990;65(9 Suppl):S63-S67.", link:'https://journals.lww.com/academicmedicine/Abstract/1990/09000/The_assessment_of_clinical.45.aspx' }
+        ]
+      },
+      {
+        num: '05',
+        title: '工作場域評量（WBA）四大工具',
+        body: `<p>選工具的原則：<strong>依據要評估的能力屬性</strong>，不是全部都用 Mini-CEX 打發。</p>
+        <p>• <strong>Mini-CEX</strong> (Mini Clinical Evaluation Exercise)：Norcini 1995 年發表，看一次完整看診，整合性強<sup>1</sup>。</p>
+        <p>• <strong>DOPS</strong> (Direct Observation of Procedural Skills)：英國 RCP 2003 提出，看單一操作如插管、超音波<sup>2</sup>。</p>
+        <p>• <strong>CbD</strong> (Case-based Discussion)：圍繞病歷做臨床推理討論<sup>3</sup>。</p>
+        <p>• <strong>MSF</strong> (Multi-Source Feedback / 360 度回饋)：適合 professionalism 與溝通能力<sup>4</sup>。</p>`,
+        memo: '一個資深教師應該知道何時用哪一樣 — <strong>技術操作 → DOPS、整合性表現 → Mini-CEX、推理判斷 → CbD、團隊行為 → MSF</strong>。',
+        refs: [
+          { txt: 'Norcini JJ, Blank LL, Duffy FD, Fortna GS. The mini-CEX: a method for assessing clinical skills. <em>Ann Intern Med.</em> 2003;138(6):476-481.', link:'https://www.acpjournals.org/doi/10.7326/0003-4819-138-6-200303180-00012' },
+          { txt: 'Wragg A, Wade W, Fuller G, Cowan G, Mills P. Assessing the performance of specialist registrars. <em>Clin Med (Lond).</em> 2003;3(2):131-134.', link:'https://www.rcpjournals.org/content/clinmedicine/3/2/131' },
+          { txt: 'Norcini J, Burch V. Workplace-based assessment as an educational tool: AMEE Guide No. 31. <em>Med Teach.</em> 2007;29(9):855-871.', link:'https://www.tandfonline.com/doi/full/10.1080/01421590701775453' },
+          { txt: 'Lockyer J. Multisource feedback in the assessment of physician competencies. <em>J Contin Educ Health Prof.</em> 2003;23(1):4-12.', link:'https://onlinelibrary.wiley.com/doi/10.1002/chp.1340230103' }
+        ]
+      },
+      {
+        num: '06',
+        title: 'Programmatic Assessment — 多次多元才可靠',
+        body: `<p>van der Vleuten 2012 提出 <strong>programmatic assessment</strong> 模型：單一評核都不可靠，但<strong>多次、多元、多人</strong>的評核加總起來能支持高風險決策<sup>1</sup>。從 <code>assessment OF learning</code> 走向 <code>assessment FOR learning</code><sup>2</sup>。</p>
+        <p>這解釋了為什麼 CBME 不能依賴單一筆試或單一 Mini-CEX，而必須靠連續累積與 CCC 整合判斷。也是 CCC 第三版 Guidebook 中強調「shift from assessment of learning to assessment for learning」的理論根源<sup>3</sup>。</p>`,
+        visual: 'chenScale',
+        refs: [
+          { txt: 'van der Vleuten CP, Schuwirth LW, Driessen EW, et al. A model for programmatic assessment fit for purpose. <em>Med Teach.</em> 2012;34(3):205-214.', link:'https://www.tandfonline.com/doi/abs/10.3109/0142159X.2012.652239' },
+          { txt: 'Schuwirth LW, Van der Vleuten CP. Programmatic assessment: from assessment of learning to assessment for learning. <em>Med Teach.</em> 2011;33(6):478-485.', link:'https://www.tandfonline.com/doi/abs/10.3109/0142159X.2011.565828' },
+          { txt: 'Lockyer J, Carraccio C, Chan MK, et al. Core principles of assessment in competency-based medical education. <em>Med Teach.</em> 2017;39(6):609-616.', link:'https://www.tandfonline.com/doi/abs/10.1080/0142159X.2017.1315082' }
+        ]
+      },
+      {
+        num: '07',
+        title: '群組決策的力量 — CCC 為什麼存在',
+        body: `<p>個人書面評核常常漏掉問題，但群組討論能挖出來。這不是猜測，是有實證的：</p>
+        <p>• Schwind 2004 在外科住院醫師研究中明確發現，<strong>個別教師的 post-rotation 評核常無法偵測學員的臨床缺失</strong>，但 CCC 群組討論能挖出個人評核遺漏的問題<sup>1</sup>。</p>
+        <p>• Hemmer 2000 在內科 clerkship 發現醫學生 professionalism 缺失「<strong>只有透過正式團體討論才能被識別出來</strong>」<sup>2</sup>。</p>
+        <p>• Hauer 2016 系統性回顧進一步指出：<strong>多樣化的群組決策品質優於同質群組</strong><sup>3</sup>，這是 Hong & Page 2004 在 PNAS 提出的多樣性數學定理在醫學教育中的應用<sup>4</sup>。</p>`,
+        memo: 'CCC 不是行政程序，是有實證基礎的決策設計。沒有群組討論的 CBME 等於只用一隻眼睛看。',
+        visual: 'milestoneTable',
+        refs: [
+          { txt: 'Schwind CJ, Williams RG, Boehler ML, Dunnington GL. Do individual attendings\' post-rotation performance ratings detect residents\' clinical performance deficiencies? <em>Acad Med.</em> 2004;79(5):453-457.', link:'https://journals.lww.com/academicmedicine/Fulltext/2004/05000/Do_Individual_Attendings__Post_rotation.16.aspx' },
+          { txt: 'Hemmer PA, Hawkins R, Jackson JL, Pangaro LN. Assessing how well three evaluation methods detect deficiencies in medical students\' professionalism. <em>Acad Med.</em> 2000;75(2):167-173.', link:'https://journals.lww.com/academicmedicine/Fulltext/2000/02000/Assessing_How_Well_Three_Evaluation_Methods_Detect.16.aspx' },
+          { txt: 'Hauer KE, ten Cate O, Boscardin CK, et al. Ensuring resident competence: A narrative review of the literature on group decision making to inform the work of Clinical Competency Committees. <em>J Grad Med Educ.</em> 2016;8(2):156-164.', link:'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4857505/' },
+          { txt: 'Hong L, Page SE. Groups of diverse problem solvers can outperform groups of high-ability problem solvers. <em>Proc Natl Acad Sci USA.</em> 2004;101(46):16385-16389.', link:'https://www.pnas.org/content/101/46/16385.long' }
+        ]
+      }
+    ]
+  },
+  layer3: {
+    badge: 'L3',
+    label: '第三層 · 人的層面',
+    audience: '所有教師、CCC 委員、Mentor',
+    goal: '讓評核轉化成成長 — 學會結構化回饋、ILP 與 coaching 技能',
+    concepts: [
+      {
+        num: '08',
+        title: '回饋的關鍵 — Educational Alliance',
+        body: `<p>很多醫院做了 CBME 表單卻沒效果，問題出在「評完就結束了」。Telio 2015 提出 <strong>educational alliance</strong> 框架徹底重新定義了什麼叫好回饋：<strong>學員能不能接受回饋，取決於他信不信任你，不取決於你講得多漂亮</strong><sup>1</sup>。</p>
+        <p>Ramani 2019 的「12 tips」更進一步指出回饋文化要從「公式（recipes）」走向「關係（relationships）」<sup>2</sup>。技巧重要，但關係更重要。</p>`,
+        memo: '<strong>沒有信任關係的回饋只會被當成「找碴」</strong>。建立 alliance 是 coaching 的第一步，也是最常被忽略的一步。',
+        refs: [
+          { txt: 'Telio S, Ajjawi R, Regehr G. The "educational alliance" as a framework for reconceptualizing feedback in medical education. <em>Acad Med.</em> 2015;90(5):609-614.', link:'https://journals.lww.com/academicmedicine/fulltext/2015/05000/The__Educational_Alliance__as_a_Framework_for.21.aspx' },
+          { txt: 'Ramani S, Könings KD, Ginsburg S, van der Vleuten CPM. Twelve tips to promote a feedback culture with a growth mind-set. <em>Med Teach.</em> 2019;41(6):625-631.', link:'https://www.tandfonline.com/doi/abs/10.1080/0142159X.2018.1432850' }
+        ]
+      },
+      {
+        num: '09',
+        title: '結構化回饋模型 — R2C2 與 ADAPT',
+        body: `<p>ACGME CCC Guidebook 第三版（2020）推薦兩個模型，擇一熟練即可：</p>
+        <p>• <strong>R2C2</strong>（Sargeant 2018）：<code>R</code>elationship → <code>R</code>eactions → <code>C</code>ontent → <code>C</code>oach。建立關係 → 探索反應 → 確認內容 → 共擬計畫，適合正式回饋會談<sup>1</sup>。</p>
+        <p>• <strong>ADAPT</strong>（Fainstad 2018）：<code>A</code>sk-<code>D</code>iscuss-<code>A</code>sk-<code>P</code>lan-<code>T</code>ogether，問學員想法 → 討論觀察 → 再問澄清 → 共擬計畫，簡潔不令人焦慮<sup>2</sup>。</p>
+        <p>Armson 2019 進一步辨識出三類核心 coaching 技能可訓練：建立關係、促進反思、共擬學習計畫<sup>3</sup>。</p>`,
+        memo: '重點不是用哪個模型，而是<strong>有結構，避免「你要再加油」這種無效回饋</strong>。',
+        refs: [
+          { txt: 'Sargeant J, Lockyer JM, Mann K, et al. The R2C2 Model in residency education: How does it foster coaching and promote feedback use? <em>Acad Med.</em> 2018;93(7):1055-1063.', link:'https://journals.lww.com/academicmedicine/fulltext/2018/07000/The_R2C2_Model_in_Residency_Education__How_Does_It.30.aspx' },
+          { txt: 'Fainstad T, McClintock AA, Van der Ridder MJ, Johnston SS, Patton KK. Feedback can be less stressful: Medical trainee perceptions of using the prepare to ADAPT Framework. <em>Cureus.</em> 2018;10(12):e3718.', link:'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6428363/' },
+          { txt: 'Armson H, Lockyer JM, Zetkulic M, Könings KD, Sargeant J. Identifying coaching skills to improve feedback use in postgraduate medical education. <em>Med Educ.</em> 2019;53(5):477-493.', link:'https://onlinelibrary.wiley.com/doi/full/10.1111/medu.13818' }
+        ]
+      },
+      {
+        num: '10',
+        title: 'ILP — 個別化學習計畫',
+        body: `<p>Li & Burke 2010 的綜述明確指出 ILP 的核心元素：<strong>學員自我反思 → SMART 目標設定 → 與導師共同制定 → 定期檢視</strong><sup>1</sup>。Knowles 的成人學習理論（andragogy）提供 ILP 的理論底層：成人學習者需要參與制定自己的學習目標<sup>2</sup>。</p>
+        <p>關鍵原則：<strong>ILP 不是只給 At-risk 學員寫的補強計畫</strong>，每位學員都該有 ILP。差別只在 On-track 學員的 ILP 是「進階成長型」，At-risk 學員是「補強型」。ACGME Common Program Requirement V.A.1.d).(2) 明確要求所有學員都應有 ILP<sup>3</sup>。</p>`,
+        refs: [
+          { txt: 'Li ST, Burke AE. Individualized learning plans: basics and beyond. <em>Acad Pediatr.</em> 2010;10(5):289-292.', link:'https://www.academicpedsjnl.net/article/S1876-2859(10)00196-8/fulltext' },
+          { txt: 'Knowles MS, Holton EF III, Swanson RA. <em>The Adult Learner: The Definitive Class in Adult Education and Human Resources Development.</em> 6th ed. Elsevier; 2005.', link:null },
+          { txt: 'Accreditation Council for Graduate Medical Education. <em>ACGME Common Program Requirements (Residency).</em> Section V.A.1.d. 2020.', link:'https://www.acgme.org/Portals/0/PFAssets/ProgramRequirements/CPRResidency2019.pdf' }
+        ]
+      },
+      {
+        num: '11',
+        title: '從評核到 Master Adaptive Learner',
+        body: `<p>Cutrer 2017 提出的 <strong>Master Adaptive Learner</strong>（MAL）模型，是 CBME 的最終目標——不只訓練出「會看病的醫師」，更要訓練出「能持續自我更新的醫師」<sup>1</sup>。</p>
+        <p>MAL 的四階段循環：<code>Planning → Learning → Assessing → Adjusting</code>。CCC 的回饋與 ILP 的目的，都應該指向培養這個終身學習能力。Schön 的 <em>Reflective Practitioner</em> 是這個模型的哲學源頭<sup>2</sup>。</p>`,
+        memo: '<strong>畢業 ≠ 訓練結束</strong>。CBME 的成功指標不是「教會了什麼」，而是「學員能不能在離開您之後繼續成長」。',
+        refs: [
+          { txt: 'Cutrer WB, Miller B, Pusic MV, et al. Fostering the development of master adaptive learners: A conceptual model to guide skill acquisition in medical education. <em>Acad Med.</em> 2017;92(1):70-75.', link:'https://journals.lww.com/academicmedicine/Fulltext/2017/01000/Fostering_the_Development_of_Master_Adaptive.24.aspx' },
+          { txt: 'Schön DA. <em>The Reflective Practitioner: How Professionals Think in Action.</em> Basic Books; 1983.', link:null }
+        ]
+      }
+    ]
+  },
+  layer4: {
+    badge: 'L4',
+    label: '第四層 · 制度與盲點',
+    audience: '教學主管、制度設計者、DIO',
+    goal: '看見系統性的偏見、瓶頸與在地脈絡，知道改革的下手處',
+    concepts: [
+      {
+        num: '12',
+        title: '評核中的偏見 — 性別、族裔、語言',
+        body: `<p>Dayal 2017 在 <em>JAMA Intern Med</em> 發表的研究震撼了 GME 圈：急診住院醫師 milestone 評核中<strong>女性住院醫師獲分系統性低於男性，且差距隨訓練年資擴大</strong><sup>1</sup>。Klein 2019 系統性回顧指出多個專科都有類似現象<sup>2</sup>。</p>
+        <p>但 Hamstra 2019 的反向發現提醒我們：<strong>偏見模式因專科文化而異</strong>，在小兒科與部分家醫科 milestone 中，女性反而得分較高<sup>3</sup>。CCC 必須<strong>檢視自家資料</strong>才能精準介入。</p>
+        <p>Mueller 2017 與 Rojek 2019 的語言學分析也顯示：<strong>敘述性回饋中存在系統性詞彙差異</strong>——女性常被用「nice」「pleasant」，男性則用「confident」「strong」<sup>4-5</sup>。CCC 審閱書面評語時需警覺。</p>`,
+        memo: '<strong>台灣目前少見此類在地研究</strong>。CCC 主席可帶頭做一個簡單的內部分析：看看本院 milestone 評等是否有性別差異。這是值得關注的盲點。',
+        refs: [
+          { txt: "Dayal A, O'Connor DM, Qadri U, Arora VM. Comparison of male vs. female resident Milestone evaluations by faculty during emergency medicine residency training. <em>JAMA Intern Med.</em> 2017;177(5):651-657.", link:'https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2607209' },
+          { txt: 'Klein R, Julian A, Snyder ED, et al. Gender bias in resident assessment in graduate medical education: Review of the literature. <em>J Gen Intern Med.</em> 2019;34(5):712-719.', link:'https://link.springer.com/article/10.1007/s11606-019-04884-0' },
+          { txt: 'Hamstra SJ, Yamazaki K, Holmboe E. Gender group differences in Milestone ratings. <em>J Grad Med Educ.</em> 2019;11(6):722-731.', link:'https://www.jgme.org/doi/full/10.4300/JGME-D-19-00734.1' },
+          { txt: "Mueller AS, Jenkins TM, Osborne M, et al. Gender differences in attending physicians' feedback to residents: A qualitative analysis. <em>J Grad Med Educ.</em> 2017;9(5):577-585.", link:'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5646913/' },
+          { txt: 'Rojek AE, Khanna R, Yim JWL, et al. Differences in narrative language in evaluations of medical students by gender and under-represented minority status. <em>J Gen Intern Med.</em> 2019;34(5):684-691.', link:'https://link.springer.com/article/10.1007/s11606-019-04889-9' }
+        ]
+      },
+      {
+        num: '13',
+        title: 'Faculty Development 是真正的瓶頸',
+        body: `<p>Steinert 2016 的系統性回顧明確指出：CBME 推不動的真正原因不是表單設計，而是<strong>教師沒被訓練好怎麼觀察、怎麼評核、怎麼回饋</strong><sup>1</sup>。最有效的形式是<strong>長期、多元、結合實作的 longitudinal program</strong>，不是一次性的演講。</p>
+        <p>Steinert 2009 的早期研究發現一年一次的 FD 是基本盤，但僅這樣不夠——成功的 FD 包含：實作、回饋、社群、制度連結四要素<sup>2</sup>。van der Vleuten 在多個論述中強調：<strong>「真正的評核工具不是表單，是教師本人」</strong>。</p>`,
+        memo: '若資源有限，<strong>把錢花在訓練教師，而不是設計更精細的表單</strong>。表單再漂亮，沒人會用都是廢紙。',
+        refs: [
+          { txt: 'Steinert Y, Mann K, Anderson B, et al. A systematic review of faculty development initiatives designed to improve teaching effectiveness: A 10-year update: BEME Guide No. 40. <em>Med Teach.</em> 2016;38(8):769-786.', link:'https://www.tandfonline.com/doi/full/10.1080/0142159X.2016.1181851' },
+          { txt: 'Steinert Y. Staff development for clinical teachers. <em>Clin Teach.</em> 2005;2(2):104-110.', link:'https://onlinelibrary.wiley.com/doi/10.1111/j.1743-498X.2005.00062.x' }
+        ]
+      },
+      {
+        num: '14',
+        title: '學術正當程序 — Notice、Cure、Reasonable Decision',
+        body: `<p>美國最高法院兩個判決確立了學術決策的法律框架，這是 CCC 紀錄怎麼寫、證據怎麼留的根本依據：</p>
+        <p>• <strong>Horowitz (1978)</strong>：奠定學術正當程序三要件——① 給予具體 <strong>notice</strong>（缺失通知）、② 提供 <strong>opportunity to cure</strong>（改善機會）、③ <strong>reasonable decision-making process</strong>（審慎評議）<sup>1</sup>。</p>
+        <p>• <strong>Ewing (1985)</strong>：進一步強化教師評核委員會的法律地位，判決明確指出「<em>conscientious and made with careful deliberation</em>」的學術決策應受司法尊重，且應<strong>審視整體學術紀錄而非單一事件</strong><sup>2</sup>。</p>
+        <p>台灣雖無同等判例，但「正當程序」原則於行政程序法已確立，應比照辦理。Govaerts 2019 進一步提出 <strong>Polarity Thinking™</strong> 處理 CCC 委員間的決策張力<sup>3</sup>。</p>`,
+        memo: 'CCC 紀錄該寫詳細，<strong>但要去識別化</strong>。詳細是為了證明審慎評議；去識別化是為了保護學員與委員。',
+        refs: [
+          { txt: 'Board of Curators of Univ. of Mo. v. Horowitz, 435 U.S. 78, 98 S. Ct. 948 (1978).', link:'https://supreme.justia.com/cases/federal/us/435/78/' },
+          { txt: 'Regents of Univ. of Mich. v. Ewing, 474 U.S. 214, 106 S. Ct. 507 (1985).', link:'https://supreme.justia.com/cases/federal/us/474/214/' },
+          { txt: 'Govaerts MJB, van der Vleuten CPM, Holmboe ES. Managing tensions in assessment: moving beyond either-or assessment. <em>Med Educ.</em> 2019;53(1):64-75.', link:'https://onlinelibrary.wiley.com/doi/full/10.1111/medu.13656' }
+        ]
+      },
+      {
+        num: '15',
+        title: '在地脈絡 — 台灣的特殊性',
+        body: `<p>國外文獻不會教您的台灣特殊問題：</p>
+        <p>• <strong>TMAC 評鑑基準</strong>將 CBME 落實列入醫學系評鑑要求<sup>1</sup>。</p>
+        <p>• <strong>衛福部「臨床醫事人員培訓計畫」</strong>定義 PGY 訓練框架<sup>2</sup>，是醫師、各醫事職類的共通基底。</p>
+        <p>• <strong>各專科學會公版 EPA 引進進度不一</strong>——本院調查 25 個西醫科部中，僅 3-4 個已採用學會公版（家醫、急診、麻醉等），多數仍在制定中。詳見「重要文獻指引 → 醫師職類」分頁。</p>
+        <p>• <strong>健保給付制度下的時間壓力</strong>如何擠壓教學空間，是台灣特有的落地阻力。Lin 2019 的本土研究指出時間壓力是 WBA 落地最大障礙<sup>3</sup>。</p>`,
+        visual: 'frameworkTable',
+        refs: [
+          { txt: '臺灣醫學院評鑑委員會（TMAC）。<em>醫學系評鑑基準。</em>', link:'https://www.tjcha.org.tw/' },
+          { txt: '衛生福利部。<em>臨床醫事人員培訓計畫申請作業要點。</em>', link:'https://www.mohw.gov.tw/' },
+          { txt: 'Lin CW, Clinciu DL, Swartz MH, et al. Workplace-based assessment for international medical graduates: At what cost? <em>Postgrad Med J.</em> 2019;95(1124):323-329.', link:'https://pmj.bmj.com/content/95/1124/323' }
+        ]
+      }
+    ]
+  }
+};
+
 function renderCBME(){
   return `
-    <div class="tabs">
-      <button class="tab active" onclick="cbmeTab('miller',this)">Miller's Pyramid</button>
-      <button class="tab" onclick="cbmeTab('epa',this)">AAMC 13 Core EPAs</button>
-      <button class="tab" onclick="cbmeTab('chen',this)">Chen 五階委任量尺</button>
-      <button class="tab" onclick="cbmeTab('milestone',this)">Milestone L1–5</button>
-      <button class="tab" onclick="cbmeTab('compare',this)">三大框架對照</button>
+    <div class="section-intro" style="margin-bottom:1.5rem">
+      <h4>四層學習路徑 · CBME 完整地圖</h4>
+      <p>從「為什麼」到「制度盲點」的學習階梯。每個概念皆附原始文獻來源，可點擊延伸閱讀。建議按 L1 → L4 順序學習，亦可依角色直接跳到對應層級。</p>
     </div>
-    <div id="cbme-content">${cbmeContent('miller')}</div>
+    <div class="tabs">
+      <button class="tab active" onclick="cbmeTab('layer1',this)">L1 · 必懂的「為什麼」</button>
+      <button class="tab" onclick="cbmeTab('layer2',this)">L2 · 評核基本功</button>
+      <button class="tab" onclick="cbmeTab('layer3',this)">L3 · 人的層面</button>
+      <button class="tab" onclick="cbmeTab('layer4',this)">L4 · 制度與盲點</button>
+    </div>
+    <div id="cbme-content">${cbmeLayer('layer1')}</div>
   `;
 }
+
 function cbmeTab(key,btn){
-  document.querySelectorAll('#modal-content .tab').forEach(t=>t.classList.remove('active'));
+  const allTabs = btn.parentElement.querySelectorAll('.tab');
+  allTabs.forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('cbme-content').innerHTML = cbmeContent(key);
+  document.getElementById('cbme-content').innerHTML = cbmeLayer(key);
 }
-function cbmeContent(key){
-  if(key==='miller'){
+
+function cbmeLayer(key){
+  const L = CBME_LAYERS[key];
+  return `
+    <div class="layer-header">
+      <div class="layer-badge">${L.badge}</div>
+      <div class="layer-meta">
+        <div class="layer-meta-label">${L.label}</div>
+        <div class="layer-meta-audience">適用對象：${L.audience}</div>
+        <div class="layer-meta-goal">學習目標：${L.goal}</div>
+      </div>
+    </div>
+    ${L.concepts.map(c=>renderConcept(c)).join('')}
+  `;
+}
+
+function renderConcept(c){
+  let visualHTML = '';
+  if(c.visual){
+    visualHTML = `<div class="concept-visual">${getCBMEVisual(c.visual)}</div>`;
+  }
+  let memoHTML = '';
+  if(c.memo){
+    memoHTML = `<div class="concept-memo">📌 ${c.memo}</div>`;
+  }
+  let plainHTML = '';
+  if(PLAIN_INTROS[c.num]){
+    plainHTML = `<div class="concept-plain"><div class="concept-plain-body">${PLAIN_INTROS[c.num]}</div></div>`;
+  }
+  return `
+    <div class="concept-card">
+      <div class="concept-num">${c.num}</div>
+      <div class="concept-title">${c.title}</div>
+      ${plainHTML}
+      <div class="concept-academic-label">深入了解（含文獻引用）</div>
+      <div class="concept-body">${c.body}</div>
+      ${memoHTML}
+      ${visualHTML}
+      <div class="concept-refs">
+        <div class="concept-refs-label">參考文獻 References</div>
+        <ol>
+          ${c.refs.map(r=>`<li>${r.txt}${r.link?` · <a href="${r.link}" target="_blank" rel="noopener">原文連結</a>`:''}</li>`).join('')}
+        </ol>
+      </div>
+    </div>
+  `;
+}
+
+function getCBMEVisual(kind){
+  if(kind==='pyramid'){
     return `
-      <div class="section-intro"><h4>Miller's Pyramid (1990)</h4>
-      <p>能力評核的經典金字塔，從「知道」到「實際做到」的四個階層。CCC 強調 <strong>Does</strong> 層次的工作場域評量 (WBA)。</p></div>
       <div class="pyramid">
         <div class="pyramid-level"><span class="level-en">KNOWS</span><span class="level-zh">知識回憶 · 筆試、選擇題</span></div>
         <div class="pyramid-level"><span class="level-en">KNOWS HOW</span><span class="level-zh">知識應用 · 案例分析、PMP</span></div>
         <div class="pyramid-level"><span class="level-en">SHOWS HOW</span><span class="level-zh">情境表現 · OSCE、Sim Lab</span></div>
         <div class="pyramid-level"><span class="level-en">DOES</span><span class="level-zh">實務操作 · WBA：Mini-CEX、DOPS、CbD、MSF</span></div>
       </div>
-      <div class="c-summary" style="margin-top:1rem">CCC 的工作核心在最上層的 <strong>Does</strong>，整合多個工作場域評核資料，判定學員的真實臨床表現。</div>
     `;
   }
-  if(key==='epa'){
+  if(kind==='epaList'){
     const epas = [
       ['EPA 1','病史詢問與身體理學檢查'],['EPA 2','優先診斷與鑑別診斷'],
       ['EPA 3','建議與解讀診斷檢查'],['EPA 4','常見處方與下醫囑'],
@@ -701,50 +1414,45 @@ function cbmeContent(key){
       ['EPA 13','病人安全 · 錯誤通報']
     ];
     return `
-      <div class="section-intro"><h4>AAMC 13 Core EPAs for Entering Residency</h4>
-      <p>美國醫學院協會公告的 13 項住院醫師訓練前必備的可委任專業活動，廣為各國醫學教育引用。</p></div>
-      <div class="dept-grid">
-        ${epas.map(([n,t])=>`<div class="dept-row">
-          <div class="dept-info"><div class="dept-name">${n}</div><div class="dept-society">${t}</div></div>
+      <div style="font-size:.72rem;color:var(--cyan);font-weight:700;margin-bottom:.6rem;letter-spacing:.05em">📋 AAMC 13 Core EPAs for Entering Residency</div>
+      <div class="dept-grid" style="margin-bottom:0">
+        ${epas.map(([n,t])=>`<div class="dept-row" style="padding:.55rem .75rem">
+          <div class="dept-info"><div class="dept-name" style="font-size:.75rem">${n}</div><div class="dept-society" style="font-size:.65rem">${t}</div></div>
         </div>`).join('')}
       </div>
     `;
   }
-  if(key==='chen'){
+  if(kind==='chenScale'){
     return `
-      <div class="section-intro"><h4>Chen 五階委任量尺 (Entrustment Scale)</h4>
-      <p>由 Chen et al. 2015 提出，是當前 EPA 評核最廣為採用的量尺。每階對應不同督導強度。</p></div>
-      <div class="dept-grid" style="grid-template-columns:1fr">
-        <div class="dept-row"><div class="dept-info"><div class="dept-name">Level 1 · 觀察學習</div><div class="dept-society">未獲允許執行，僅能在旁觀察 (Observe only)</div></div></div>
-        <div class="dept-row"><div class="dept-info"><div class="dept-name">Level 2 · 直接督導</div><div class="dept-society">可動手執行，但教師全程在場直接觀察 (Direct supervision)</div></div></div>
-        <div class="dept-row"><div class="dept-info"><div class="dept-name">Level 3 · 間接督導</div><div class="dept-society">可獨立執行，教師立即可協助 (Indirect, immediately available)</div></div></div>
-        <div class="dept-row"><div class="dept-info"><div class="dept-name">Level 4 · 遠端督導</div><div class="dept-society">獨立執行，教師事後審閱（On call / 事後檢核）</div></div></div>
-        <div class="dept-row"><div class="dept-info"><div class="dept-name">Level 5 · 教學他人</div><div class="dept-society">能可靠執行並指導年輕學員 (Supervises others)</div></div></div>
+      <div style="font-size:.72rem;color:var(--cyan);font-weight:700;margin-bottom:.6rem;letter-spacing:.05em">📊 Chen 五階委任量尺（Entrustment Scale）</div>
+      <div class="dept-grid" style="grid-template-columns:1fr;margin-bottom:0">
+        <div class="dept-row" style="padding:.55rem .75rem"><div class="dept-info"><div class="dept-name" style="font-size:.75rem">L1 · 觀察學習</div><div class="dept-society" style="font-size:.65rem">未獲允許執行，僅能在旁觀察</div></div></div>
+        <div class="dept-row" style="padding:.55rem .75rem"><div class="dept-info"><div class="dept-name" style="font-size:.75rem">L2 · 直接督導</div><div class="dept-society" style="font-size:.65rem">可動手執行，教師全程在場</div></div></div>
+        <div class="dept-row" style="padding:.55rem .75rem"><div class="dept-info"><div class="dept-name" style="font-size:.75rem">L3 · 間接督導</div><div class="dept-society" style="font-size:.65rem">可獨立執行，教師立即可協助</div></div></div>
+        <div class="dept-row" style="padding:.55rem .75rem"><div class="dept-info"><div class="dept-name" style="font-size:.75rem">L4 · 遠端督導</div><div class="dept-society" style="font-size:.65rem">獨立執行，教師事後審閱</div></div></div>
+        <div class="dept-row" style="padding:.55rem .75rem"><div class="dept-info"><div class="dept-name" style="font-size:.75rem">L5 · 教學他人</div><div class="dept-society" style="font-size:.65rem">能可靠執行並指導年輕學員</div></div></div>
       </div>
     `;
   }
-  if(key==='milestone'){
+  if(kind==='milestoneTable'){
     return `
-      <div class="section-intro"><h4>ACGME Milestone Level 1–5</h4>
-      <p>Milestone 描述能力的「發展軌跡」，<strong>Level 4</strong> 對應到能獨立執業的「準畢業生」門檻，<strong>Level 5</strong> 是專家級。</p></div>
-      <table class="framework-table">
+      <div style="font-size:.72rem;color:var(--cyan);font-weight:700;margin-bottom:.6rem;letter-spacing:.05em">📈 ACGME Milestone Level 1–5</div>
+      <table class="framework-table" style="font-size:.72rem">
         <thead><tr><th>Level</th><th>對應階段</th><th>能力描述</th></tr></thead>
         <tbody>
-          <tr><td>Level 1</td><td>剛進入訓練</td><td>具備醫學系畢業生的基本知識，需大量督導</td></tr>
-          <tr><td>Level 2</td><td>初階住院醫師</td><td>對常見問題已建立解決框架，仍需督導確認</td></tr>
-          <tr><td>Level 3</td><td>進階住院醫師</td><td>可處理多數情境，僅複雜案例需協助</td></tr>
-          <tr><td><strong style="color:var(--green)">Level 4</strong></td><td><strong>準畢業 / 可獨立執業</strong></td><td><strong>能獨立處理絕大多數臨床情境，達到專科認證標準</strong></td></tr>
-          <tr><td>Level 5</td><td>專家級表現</td><td>能教學、領導變革、推動制度改善</td></tr>
+          <tr><td>L1</td><td>剛進入訓練</td><td>具備醫學系畢業生的基本知識，需大量督導</td></tr>
+          <tr><td>L2</td><td>初階住院醫師</td><td>對常見問題已建立解決框架，仍需督導確認</td></tr>
+          <tr><td>L3</td><td>進階住院醫師</td><td>可處理多數情境，僅複雜案例需協助</td></tr>
+          <tr><td><strong style="color:var(--green)">L4</strong></td><td><strong>準畢業 / 可獨立執業</strong></td><td><strong>能獨立處理絕大多數臨床情境</strong></td></tr>
+          <tr><td>L5</td><td>專家級</td><td>能教學、領導變革、推動制度改善</td></tr>
         </tbody>
       </table>
-      <div class="c-summary">CCC 的關鍵任務是判定學員是否達到 <strong>Level 4</strong>，即能否進入獨立執業階段。</div>
     `;
   }
-  if(key==='compare'){
+  if(kind==='frameworkTable'){
     return `
-      <div class="section-intro"><h4>ACGME / CanMEDS / TMAC 三大框架對照</h4>
-      <p>三大主流醫學教育框架的核心能力對應，便於跨框架引用。</p></div>
-      <table class="framework-table">
+      <div style="font-size:.72rem;color:var(--cyan);font-weight:700;margin-bottom:.6rem;letter-spacing:.05em">🌐 ACGME / CanMEDS / TMAC 三大框架對照</div>
+      <table class="framework-table" style="font-size:.72rem">
         <thead><tr><th>ACGME (6)</th><th>CanMEDS (7)</th><th>TMAC 對應</th></tr></thead>
         <tbody>
           <tr><td>Patient Care</td><td>Medical Expert</td><td>臨床照護能力</td></tr>
@@ -757,6 +1465,7 @@ function cbmeContent(key){
       </table>
     `;
   }
+  return '';
 }
 
 // ---- 科部推展案例 ----
@@ -803,17 +1512,115 @@ function cccTab(key,btn){
   btn.classList.add('active');
   document.getElementById('ccc-content').innerHTML = cccContent(key);
 }
+function charterSubTab(key,btn){
+  const allTabs = btn.parentElement.querySelectorAll('.tab');
+  allTabs.forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('charter-content').innerHTML = charterContent(key);
+}
+function charterContent(key){
+  if(key==='physician') return charterPhysicianContent();
+  if(key==='allied') return charterAlliedContent();
+}
+
+function charterPhysicianContent(){
+  // CCC-related videos (filter from FACULTY_VIDEOS)
+  const cccVideos = [];
+  Object.entries(FACULTY_VIDEOS).forEach(([group,videos])=>{
+    videos.forEach(v=>{
+      if(group==='CCC 實務工作坊' || v.title.includes('CBME 綜論')){
+        cccVideos.push(v);
+      }
+    });
+  });
+  return `
+    <div style="padding:.9rem 1.1rem;background:var(--bg-section);border:1px solid var(--border);border-radius:12px;margin-bottom:1.2rem;font-size:.82rem;color:var(--text)">
+      🩺 <strong style="color:var(--accent-dark)">醫師職類 CCC 章程</strong> · 本院已有 <strong>7 個醫師科部</strong>（急診、影像、婦產、外科、家醫、兒科、神外）制定 CCC 章程，下方先呈現整合的<strong>九大原則</strong>，再列出各科部章程<strong>亮點對照</strong>，最後提供<strong>院內 CCC 主題培訓影片</strong>連結。
+    </div>
+
+    <!-- Principles -->
+    <div class="video-group-title" style="margin-bottom:1rem">📜 九大原則（整合本院 7 份章程萃取）</div>
+    ${CCC_PRINCIPLES.map(c=>`
+      <div class="c-card">
+        <div class="c-title">${c.item}</div>
+        <div class="c-summary">${c.detail}</div>
+      </div>
+    `).join('')}
+
+    <!-- Department charters -->
+    <div class="video-group-title" style="margin-top:2rem;margin-bottom:1rem">🏥 本院 7 個醫師科部 CCC 章程亮點對照</div>
+    <div class="dept-charter-grid">
+      ${HOSPITAL_CCC_DEPTS.map(d=>`
+        <div class="dept-charter-card dept-color-${d.color}">
+          <div class="dept-charter-header">
+            <div class="dept-charter-name">${d.name}</div>
+            ${d.date?`<div class="dept-charter-date">${d.date}</div>`:''}
+          </div>
+          <div class="dept-charter-meta">
+            <div class="dept-charter-meta-row"><span class="dept-charter-meta-key">委員組成</span><span>${d.members}</span></div>
+            <div class="dept-charter-meta-row"><span class="dept-charter-meta-key">開會頻率</span><span>${d.freq}</span></div>
+            <div class="dept-charter-meta-row"><span class="dept-charter-meta-key">主席</span><span>${d.chair}</span></div>
+          </div>
+          <div class="dept-charter-highlights">
+            <div class="dept-charter-highlights-label">特色亮點</div>
+            <ul>${d.highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- CCC training videos -->
+    <div class="video-group-title" style="margin-top:2rem;margin-bottom:1rem">🎬 想深入 CCC 實務操作？院內培訓影片</div>
+    <div style="padding:.9rem 1.1rem;background:var(--bg-section);border-radius:12px;margin-bottom:1rem;font-size:.78rem;color:var(--text-muted)">
+      以下精選 <strong>3 部與 CCC 直接相關的師培影片</strong>（楊志偉副主任 / 周致丞主任主講），點擊在新分頁開啟院內影片連結。完整 7 部影片請至「<strong>師培演講精華</strong>」區塊。
+    </div>
+    <div class="video-grid">
+      ${cccVideos.map(v=>{
+        const initial = v.speaker.charAt(0);
+        return `
+        <a class="video-card" href="${v.url}" target="_blank" rel="noopener">
+          <div class="video-icon">${ICONS.play}</div>
+          <div class="video-meta">
+            <div class="video-date">${v.date}</div>
+            <div class="video-title">${v.title}</div>
+            <div class="video-speaker">
+              <div class="video-speaker-avatar">${initial}</div>
+              <span class="video-speaker-name">${v.speaker}</span>
+              <span class="video-speaker-pos">· ${v.position}</span>
+              <span class="video-speaker-aff">· ${v.affiliation}</span>
+            </div>
+          </div>
+        </a>
+      `}).join('')}
+    </div>
+  `;
+}
+
+function charterAlliedContent(){
+  const items = CCC_CHARTER.allied;
+  return `
+    <div style="padding:.9rem 1.1rem;background:var(--bg-section);border:1px solid var(--border);border-radius:12px;margin-bottom:1.2rem;font-size:.82rem;color:var(--text)">
+      💊 <strong style="color:var(--accent-dark)">醫事職類 CCC 章程</strong> · 依各全聯會公版核心職能架構整合，跨職類通則。具體執行細節請對照您所屬職類學會的公版。本院尚未收錄各醫事職類具體章程文件，若您有手邊資料歡迎提供以更新此區。
+    </div>
+    ${items.map(c=>`
+      <div class="c-card">
+        <div class="c-title">${c.item}</div>
+        <div class="c-summary">${c.detail}</div>
+      </div>
+    `).join('')}
+  `;
+}
+
 function cccContent(key){
   if(key==='charter'){
     return `
       <div class="section-intro"><h4>CCC 章程七大要點</h4>
-      <p>依 ACGME 2020 Common Program Requirements 與 Guidebook 第三版整理，協助科部訂定本院 CCC 運作章程。</p></div>
-      ${CCC_CHARTER.map(c=>`
-        <div class="c-card">
-          <div class="c-title">${c.item}</div>
-          <div class="c-summary">${c.detail}</div>
-        </div>
-      `).join('')}
+      <p>依 ACGME 2020 Common Program Requirements 與 Guidebook 第三版整理，協助科部訂定本院 CCC 運作章程。<strong>醫師職類</strong>與<strong>醫事職類</strong>的章程要點原則相通，但組成、主席、評核工具細節有別，請依您的職類選擇對應分頁。</p></div>
+      <div class="tabs" style="margin-bottom:1rem">
+        <button class="tab active" onclick="charterSubTab('physician',this)">🩺 醫師職類 CCC</button>
+        <button class="tab" onclick="charterSubTab('allied',this)">💊 醫事職類 CCC</button>
+      </div>
+      <div id="charter-content">${charterContent('physician')}</div>
     `;
   }
   if(key==='matrix'){
@@ -1067,6 +1874,172 @@ function toast(msg,type){
 
 document.addEventListener('keydown',(e)=>{
   if(e.key==='Escape') closeModal();
+});
+
+
+// ============ ONBOARDING ============
+const OB_CONTENT = {
+  1: `
+    <div class="ob-step-content">
+      <div class="ob-step-emoji-big">🎯</div>
+      <div class="ob-quote">
+        <strong>過去：</strong>訓練醫師看「待夠多久」（內科 PGY 訓 3 年就結業）<br>
+        <strong>CBME：</strong>訓練醫師看「能不能獨立處理問題」（達到能力門檻才結業）
+      </div>
+      <div class="ob-section">
+        <div class="ob-section-title">為什麼要改？</div>
+        <ul class="ob-list">
+          <li>① <strong>病人安全</strong>：每年數萬人死於可預防的醫療錯誤，社會要求醫師訓練要有可驗證的成果。</li>
+          <li>② <strong>知識爆炸</strong>：醫學知識每 5–7 年翻一倍，靠時間訓練裝不下。</li>
+          <li>③ <strong>社會問責</strong>：病人家屬要的是「會看病的醫師」，不是「念過書的醫師」。</li>
+        </ul>
+      </div>
+      <div class="concept-memo">📌 一句話結論：<strong>CBME 不是換表單，是換思維</strong>。從「看時鐘」變成「看本事」。</div>
+    </div>
+  `,
+  2: `
+    <div class="ob-step-content">
+      <div class="ob-step-emoji-big">🔤</div>
+      <div class="ob-section">
+        <div class="ob-section-title">CBME 的「字母表」 — 四個必懂的詞</div>
+        <ul class="ob-list">
+          <li><strong>Competency 能力</strong>：可被觀察、可被評核的具體行為（不是抽象的「素養」「態度」）。</li>
+          <li><strong>Milestone 里程碑</strong>：能力發展軌跡上的可辨識點。回答「Level 2 的學員長什麼樣子？」</li>
+          <li><strong>EPA 可委任活動</strong>：可以放心交給學員獨立完成的臨床任務。如「執行知情同意」「主持交班」。</li>
+          <li><strong>Entrustment 委任</strong>：教師判斷「我放不放心讓他自己做這件事」的決策動詞。</li>
+        </ul>
+      </div>
+      <div class="concept-memo">📌 記憶口訣：<strong>Milestone 看人，EPA 看事</strong>。兩者搭配才完整。</div>
+      <div class="ob-section">
+        <div class="ob-section-title">想看更深？</div>
+        <p style="font-size:.85rem;color:var(--text-muted);line-height:1.7">回到主畫面，點選「CBME 基礎概念 → L1 第三概念」可看完整版（含 Carraccio 2002、ten Cate 2005 等原始文獻）。</p>
+      </div>
+    </div>
+  `,
+  3: `
+    <div class="ob-step-content">
+      <div class="ob-step-emoji-big">🧭</div>
+      <div class="ob-section">
+        <div class="ob-section-title">您是誰？該看哪些區塊？</div>
+        <div class="ob-role-grid">
+          <div class="ob-role" onclick="closeModal();openSection('cbme')">
+            <div class="ob-role-emoji">👨‍⚕️</div>
+            <div class="ob-role-name">新進臨床教師</div>
+            <div class="ob-role-path">先看 <strong>CBME L1</strong>，再看「<strong>師培影片</strong>」中的「概念與架構」4 部</div>
+          </div>
+          <div class="ob-role" onclick="closeModal();openSection('cbme')">
+            <div class="ob-role-emoji">⚖️</div>
+            <div class="ob-role-name">CCC 委員</div>
+            <div class="ob-role-path">必讀 <strong>CBME L2 + CCC 規章</strong>，加 <strong>師培影片「CCC 實務工作坊」</strong> 2 部</div>
+          </div>
+          <div class="ob-role" onclick="closeModal();openSection('cbme')">
+            <div class="ob-role-emoji">🎓</div>
+            <div class="ob-role-name">教學主管 / DIO</div>
+            <div class="ob-role-path">需熟悉 <strong>CBME L4 + ACGME CCC Guidebook</strong>（重要文獻指引）</div>
+          </div>
+          <div class="ob-role" onclick="closeModal();openSection('docless')">
+            <div class="ob-role-emoji">💼</div>
+            <div class="ob-role-name">行政助理</div>
+            <div class="ob-role-path">主要看「<strong>降低文書負擔</strong>」+ 協助發送「<strong>師培影片</strong>」連結</div>
+          </div>
+          <div class="ob-role" onclick="closeModal();openSection('lit')">
+            <div class="ob-role-emoji">💊</div>
+            <div class="ob-role-name">醫事職類教師</div>
+            <div class="ob-role-path">先看「<strong>重要文獻 → 醫事職類</strong>」找您的全聯會公版，再看 <strong>師培影片 7</strong></div>
+          </div>
+          <div class="ob-role" onclick="closeModal();openSection('depts')">
+            <div class="ob-role-emoji">🏥</div>
+            <div class="ob-role-name">科部主任</div>
+            <div class="ob-role-path">看「<strong>科部推展案例</strong>」+「<strong>重要文獻 → 醫師職類</strong>」確認您科的學會進度</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  4: `
+    <div class="ob-step-content">
+      <div class="ob-step-emoji-big">🚀</div>
+      <div class="ob-section">
+        <div class="ob-section-title">看完導覽後，建議您：</div>
+        <ul class="ob-list">
+          <li><strong>第 1 週：</strong>選看 1 部「<strong>師培影片：CBME 整體概念與架構</strong>」（楊志偉副主任，30 分鐘），打底</li>
+          <li><strong>第 2 週：</strong>找 1 位學員試做「<strong>Mini-CEX</strong>」一次（看一次完整看診），體驗 WBA</li>
+          <li><strong>第 3 週：</strong>用「<strong>ADAPT 模型</strong>」（問 → 討論 → 問 → 共擬）給該學員回饋一次</li>
+          <li><strong>第 4 週：</strong>請學員寫一份 <strong>ILP（個別化學習計畫）</strong>，與您一起檢視</li>
+        </ul>
+      </div>
+      <div class="concept-memo">📌 不要追求一次完美，CBME 是<strong>累積的功夫</strong>。先從一位學員、一份 Mini-CEX、一次回饋會談開始。</div>
+      <div class="ob-section">
+        <div class="ob-section-title">遇到不懂的縮寫？</div>
+        <p style="font-size:.85rem;color:var(--text-muted);line-height:1.7">點右下角浮動按鈕「<strong>📖 詞彙速查</strong>」，內含 26 個常見縮寫的中英對照與一句話解釋。</p>
+      </div>
+    </div>
+  `
+};
+
+function openOnboardingStep(num){
+  const step = ONBOARDING_STEPS.find(s=>s.num===num);
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">步驟 ${num} · ${step.title}</div>
+        <div class="modal-sub">五分鐘快速入門 · ${step.shortDesc}</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    ${OB_CONTENT[num]}
+  `;
+  document.getElementById('modal-overlay').classList.add('show');
+  document.getElementById('modal-content').scrollTop = 0;
+}
+
+// ============ GLOSSARY ============
+function toggleGlossary(){
+  const panel = document.getElementById('glossary-panel');
+  panel.classList.toggle('show');
+  if(panel.classList.contains('show')){
+    setTimeout(()=>document.getElementById('glossary-search-input').focus(), 350);
+  }
+}
+
+function renderGlossaryList(items){
+  const list = document.getElementById('glossary-list');
+  if(items.length===0){
+    list.innerHTML = '<div class="glossary-empty">找不到相符的詞彙<br><span style="font-size:.7rem">試試其他關鍵字</span></div>';
+    return;
+  }
+  list.innerHTML = items.map(g=>`
+    <div class="glossary-item">
+      <div class="glossary-abbr">${g.abbr}</div>
+      <div class="glossary-en">${g.en}</div>
+      <div class="glossary-zh">${g.zh}</div>
+      <div class="glossary-desc">${g.desc}</div>
+    </div>
+  `).join('');
+}
+
+function filterGlossary(q){
+  const query = q.trim().toLowerCase();
+  if(!query){ renderGlossaryList(GLOSSARY); return; }
+  const filtered = GLOSSARY.filter(g=>
+    g.abbr.toLowerCase().includes(query) ||
+    g.en.toLowerCase().includes(query) ||
+    g.zh.includes(query) ||
+    g.desc.includes(query)
+  );
+  renderGlossaryList(filtered);
+}
+
+// Close glossary on Escape, but not section modal
+const _origKeydown = document.onkeydown;
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape'){
+    const gp = document.getElementById('glossary-panel');
+    if(gp.classList.contains('show')){
+      gp.classList.remove('show');
+      e.stopPropagation();
+    }
+  }
 });
 
 renderDashboard();
