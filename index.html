@@ -707,6 +707,206 @@ const CCC_CHARTER = {
   ]
 };
 
+const ALLIED_HEALTH_CCC = [
+  {
+    id: 'path',
+    department: '臨床病理部',
+    departmentEn: 'Clinical Pathology',
+    charterTitle: '奇美醫院臨床病理部能力評核小組規範',
+    color: 'cyan',
+    docInfo: { issueDate: '2024-03-19', version: '', docNumber: '', proposingUnit: '臨床病理部', sourceFile: 'A03' },
+    purpose: '受訓學員結訓後，經能力評核會議評估學員獨立執行專業任務授權，增加評核可信度，並強化回饋與成效。',
+    scope: [],
+    reference: '',
+    members: [
+      { role: '主席', count: '1', note: '' },
+      { role: '評核委員', count: '若干', note: '組長、教學醫檢師、臨床教師' }
+    ],
+    chairTerm: '',
+    cadence: {
+      regular: '依新聘人員試用期滿，時程前至少召開一次',
+      adhoc: '',
+      records: '每次會議均做成紀錄，以利查考',
+      auditTriggers: ['新進人員試用期滿']
+    },
+    responsibilities: [
+      '建置與審視可信賴專業活動（EPA）的適當性',
+      '推動及規劃各組可信賴專業活動的執行',
+      '督導專業任務執行情況及效果',
+      '收集及分析學員訓練資料，彙整於會議報告訓練歷程',
+      '接受臨床教師提出有關 EPA 評核的問題及建議，適度調整評核內容',
+      '計劃 CBME 之師資培育或繼續教育訓練'
+    ],
+    workflow: [
+      { step: '新進人員報到', detail: '組長排定訓練時程及考核時間（資料回傳於教學組備查）' },
+      { step: '訓練、考核', detail: '組長、教學醫檢師、臨床教師確認受訓表單完成率、執行 Ad-hoc 評核，並回饋學員受訓學習狀態' },
+      { step: '召開能力評核會議', detail: '考核後提出召開申請。教學品保（主席）彙整訓練資料、主持會議、撰寫紀錄' },
+      { step: '評核信賴等級', detail: '其他組別組長或教學醫檢師依各回饋之學員訓練情況，評核該員之信賴等級程度' },
+      { step: '結論分流', detail: '通過 → 主任正式授權並開通權限；補強或不通過 → 回到訓練／考核階段' }
+    ],
+    tools: ['EPA（可信賴專業活動）', 'Ad-hoc 評核', '受訓表單'],
+    feedbackModels: [],
+    ilpPrinciple: '',
+    recordRetention: [],
+    controlPoints: [],
+    decisionOutcomes: ['通過 → 主任授權', '補強', '不通過']
+  },
+  {
+    id: 'nutr',
+    department: '營養職類',
+    departmentEn: 'Nutrition',
+    charterTitle: '營養職類臨床能力委員會',
+    color: 'green',
+    docInfo: { issueDate: '2024', version: '', docNumber: '', proposingUnit: '營養科（三院區共構）', sourceFile: 'B02' },
+    purpose: '依據能力導向醫學教育（CBME）精神運用於新進營養師、PGY 學員訓練、營養師進階等不同職級營養師訓練作業，發展營養師核心能力及階段性任務訓練事宜，以符合各職級營養師能獨立完成各項臨床能力要求。',
+    scope: [],
+    reference: '',
+    members: [
+      { role: '主席', count: '1', note: '' },
+      { role: '各院區教學主管', count: '6', note: '三院區共構' },
+      { role: '導師', count: '1', note: '' },
+      { role: '資深臨床教師', count: '2', note: '依當次討論主題邀請協助評核' }
+    ],
+    chairTerm: '',
+    cadence: {
+      regular: '每年至少 2 次',
+      adhoc: '得以召開臨時會議',
+      records: '',
+      auditTriggers: ['新進營養師試用期滿', 'PGY 訓練臨床及團膳轉換或訓練期滿', '每年進階申請核定', '每年師資培育研議']
+    },
+    responsibilities: [],
+    workflow: [
+      { step: '會議前 — 準備資料', detail: '準備每位學員綜合表現資料（Mini-CEX、CbD、DOPS、360 度評量、EPAs 結果）；學習護照、學習歷程檔案及 Case Logs；學員學習與學術活動出席情形。學員可自行準備補充資料。' },
+      { step: '會議中 — 審視討論', detail: '逐一審視學員綜合表現資料，經會議討論後，結論學員之 EPA 信賴等級、整體訓練結果（通過或不通過）及質性回饋建議。學員可進行自評與反思。' },
+      { step: '會議後 — 紀錄與回饋', detail: '完成小組會議報告與議程紀錄，總結所有建議，包括對學員的即時、明確回饋（feedback）、學員回應與反省，以及延續上次回饋後須採取的實際行動學習計畫。' },
+      { step: '會議後 — 上傳系統', detail: '會議結果上傳至學習歷程系統，學員、臨床教師及醫院管理者皆可直接從系統檢視相關資料。' },
+      { step: '會議後 — 檢視評量工具', detail: '小組應檢視所使用的所有評量工具，是否完整涵蓋 milestone 的各項次核心能力，是否需重新審視並調整訓練課程。' },
+      { step: '會議後 — 調整授權', detail: '調整學員臨床任務授權等級。' }
+    ],
+    tools: ['Mini-CEX', 'CbD', 'DOPS', '360 度評量', 'EPAs', '學習護照', '學習歷程檔案', 'Case Logs'],
+    feedbackModels: [],
+    ilpPrinciple: '',
+    recordRetention: [],
+    controlPoints: [],
+    decisionOutcomes: ['通過', '不通過']
+  },
+  {
+    id: 'pt',
+    department: '復健部物理治療組',
+    departmentEn: 'Physical Therapy',
+    charterTitle: '復健部物理治療臨床能力委員會作業指導書',
+    color: 'amber',
+    docInfo: { issueDate: '2024-11-04', version: '01', docNumber: '總院-OO-OO-3-00001', proposingUnit: '復健部物理治療組', sourceFile: 'C08' },
+    purpose: '為落實以勝任能力為導向的醫學教育（CBME），規範物理治療學員在臨床學習期間獲得高質量的教育和評估，並確保學員具備必要的臨床能力以勝任未來的專業工作。',
+    scope: ['二年期臨床醫事人員培訓計畫之新進物理治療師', '依據復健部物理治療實習生教學計畫，與本單位簽署實習合約後收訓的物理治療實習生'],
+    reference: '',
+    members: [
+      { role: '主席', count: '1', note: '由教學計畫主持人擔任，負責召集會議和總體監督' },
+      { role: '委員會成員', count: '若干', note: '各專科（骨科、神經、兒童、心肺/加護病房、癌症腫瘤）資深物理治療教師、指導臨床教學之物理治療教師' },
+      { role: '教學負責人', count: '1', note: '負責聯絡各委員會成員、會議記錄和文件管理' }
+    ],
+    chairTerm: '',
+    cadence: {
+      regular: '每年第一季和第四季各召開一次',
+      adhoc: '根據需要隨時召開，處理緊急問題或特殊情況',
+      records: '',
+      auditTriggers: []
+    },
+    responsibilities: [
+      '委員會成員：根據既定標準對學員進行定期評估，並對學員提供回饋和建議，透過具體的回饋和改進建議使學員更具備可信賴的專業臨床能力',
+      '主席：依據各委員對學員的進展型評估結果，給予信賴等級的授權；制定和更新評估標準，確保評估標準與最新的專業要求和實踐一致',
+      '教學負責人：協調各級臨床教師與學生的問題，確保學員在訓練期間的問題和困難得到及時解決；提醒並協助重要會議的舉行'
+    ],
+    workflow: [],
+    tools: ['進展型評估', '信賴等級授權'],
+    feedbackModels: [],
+    ilpPrinciple: '',
+    recordRetention: [],
+    controlPoints: [],
+    decisionOutcomes: []
+  },
+  {
+    id: 'psy',
+    department: '臨床心理（精神醫學部）',
+    departmentEn: 'Clinical Psychology',
+    charterTitle: '臨床心理師臨床能力委員會管理程序書',
+    color: 'violet',
+    docInfo: { issueDate: '2025-04-03', version: '01', docNumber: '總院-精神-心理-2-00004', proposingUnit: '精神醫學部', sourceFile: 'C10' },
+    purpose: '為落實以勝任能力為導向的醫學教育（CBME），使臨床心理受訓學員在臨床訓練期間，能確保教學及評值的品質，及學員在訓練完成後能具備必要的臨床能力，以勝任未來的專業工作。',
+    scope: ['凡職登於奇美醫療體系且符合醫事人員臨床培訓計畫定義之臨床心理受訓學員（領證 4 年內，可接受至多 24 個月補助）', '於本院進行全職實習，主修臨床心理的研究所碩（博）士生'],
+    reference: '中華民國臨床心理師公會全國聯合會及台灣臨床心理學會 CBME 推動委員會公告之「臨床心理師核心能力與次核心能力架構-共識版」',
+    members: [
+      { role: '主席', count: '1', note: '由委員會成員互選一人擔任' },
+      { role: '核心臨床教師', count: '≥3', note: '遴選奇美醫療體系三院區各專科之臨床教師與導師' }
+    ],
+    chairTerm: '兩年，連選得連任',
+    cadence: {
+      regular: '每季一次召開 CCC',
+      adhoc: '',
+      records: '',
+      auditTriggers: ['每年一次共識會議（建立評分者間一致性）']
+    },
+    responsibilities: [],
+    workflow: [
+      { step: '委員會成員受訓取得共識', detail: '每年一次共識會議，邀請講師進行 CBME 相關主題演講；建立共享心智模型；產生書面文件描述 CCC 程序；提供操作里程碑相關評量工具的訓練；討論里程碑層級及各評分基準的指標意義。' },
+      { step: '執行訓練計畫', detail: '依據「臨床心理培訓管理程序書」、「臨床醫事人員培訓計畫-臨床心理師」、「臨床心理實習學生管理程序書」執行。' },
+      { step: '定期對學員進行評值', detail: '依規範之評值時程及評量工具進行（學習護照、各項評值表單、EPAs 評核表）。' },
+      { step: '分析評值內容', detail: '每季一次 CCC 綜合分析評值內容，依各核心能力之 EPAs 評定學員信賴等級；委員應同時檢視評量工具是否涵蓋里程碑各次核心能力。' },
+      { step: '對學員提出回饋', detail: '運用 ADAPT（Ask-Discuss-Ask-Plan Together）或 R2C2（Relationship-Response-Content-Coaching）模式；回饋從學員上一次回饋的位置開始，並審查因應上一次回饋後採取的實際改善行動。' },
+      { step: '制定個別化學習計畫（ILP）', detail: '運用 SMART 原則（具體、可測量、可達成、相關、時間限制）設定學習任務及期程；執行 ILP 同時，臨床教師與 CCC 審查進展，提供回饋與調整計畫。' },
+      { step: '再評值勝任能力', detail: '每季一次 CCC 再次評定學員之信賴等級。通過則進入下一階段；未通過則回到上一階段。' },
+      { step: '評定可獨立執業或進入下一階段訓練', detail: '臨床能力委員會做最終決定。' }
+    ],
+    tools: ['EPAs 評核表', '學習護照', '各項評值表單', '個別化學習計畫 ILP'],
+    feedbackModels: ['ADAPT (Ask-Discuss-Ask-Plan Together)', 'R2C2 (Relationship-Response-Content-Coaching)'],
+    ilpPrinciple: 'SMART（具體、可測量、可達成、相關、時間限制）',
+    recordRetention: [
+      { name: '學習護照', location: '辦公室或線上系統', years: 5 },
+      { name: '評值相關表單', location: '辦公室或線上系統', years: 5 },
+      { name: 'ILP 計畫內容', location: '辦公室或線上系統', years: 5 }
+    ],
+    controlPoints: ['CCC 會議是否定期召開', 'CCC 會議人員是否完成相關訓練及共識討論', '學員的評量後回饋與 ILP 是否確實執行'],
+    decisionOutcomes: ['通過 → 進入下一階段', '不通過 → 回到上一階段', '可獨立執業']
+  },
+  {
+    id: 'rad',
+    department: '醫事放射師',
+    departmentEn: 'Medical Radiology',
+    charterTitle: '新進醫事放射師臨床能力評估小組章程',
+    color: 'pink',
+    docInfo: { issueDate: '', version: '', docNumber: '', proposingUnit: '醫事放射師教學訓練委員會', sourceFile: 'A02' },
+    purpose: '建立嚴謹審查制度，確立完成訓練計畫之醫事放射師，於特定專長上達到必要之執行能力。設置於醫事放射師教學訓練委員會轄下組織。',
+    scope: [],
+    reference: '',
+    members: [
+      { role: '放射治療專家', count: '2', note: 'Radiation Therapy' },
+      { role: '核子醫學專家', count: '1', note: 'Nuclear Medicine' },
+      { role: '放射診斷｜一般攝影專家', count: '2', note: 'General Radiography' },
+      { role: '放射診斷｜電腦斷層專家', count: '2', note: 'CT' }
+    ],
+    chairTerm: '',
+    cadence: {
+      regular: '每年至少 2 次',
+      adhoc: '得以召開臨時會議',
+      records: '',
+      auditTriggers: []
+    },
+    responsibilities: [
+      '定期審查新進醫事放射師教學訓練能力的評估',
+      '準備並確認新進醫事放射師學習 EPAs 評估報告',
+      '編寫小組報告，總結每次會議的所有建議，包含任何負面評價和其背後的理由',
+      '定期於醫事放射師教學訓練委員會報告與討論會議中所發現的任何評估問題'
+    ],
+    workflow: [],
+    tools: ['EPAs 評估報告'],
+    feedbackModels: [],
+    ilpPrinciple: '',
+    recordRetention: [],
+    controlPoints: [],
+    decisionOutcomes: []
+  }
+];
+
 const DEPTS_MEDICAL = [
   // 西醫
   { name:'內科部', society:'台灣內科醫學會', status:'adopted', label:'已採用', link:null, group:'西醫' },
@@ -1600,14 +1800,64 @@ function charterAlliedContent(){
   const items = CCC_CHARTER.allied;
   return `
     <div style="padding:.9rem 1.1rem;background:var(--bg-section);border:1px solid var(--border);border-radius:12px;margin-bottom:1.2rem;font-size:.82rem;color:var(--text)">
-      💊 <strong style="color:var(--accent-dark)">醫事職類 CCC 章程</strong> · 依各全聯會公版核心職能架構整合，跨職類通則。具體執行細節請對照您所屬職類學會的公版。本院尚未收錄各醫事職類具體章程文件，若您有手邊資料歡迎提供以更新此區。
+      💊 <strong style="color:var(--accent-dark)">醫事職類 CCC 章程</strong> · 本院已收錄 <strong>${ALLIED_HEALTH_CCC.length} 個醫事職類</strong>（臨床病理、營養、物理治療、臨床心理、醫事放射）具體章程文件，下方先呈現跨職類通則，再列出各職類章程亮點對照。
     </div>
+
+    <!-- General cross-profession principles -->
+    <div class="video-group-title" style="margin-bottom:1rem">📜 跨職類通則</div>
     ${items.map(c=>`
       <div class="c-card">
         <div class="c-title">${c.item}</div>
         <div class="c-summary">${c.detail}</div>
       </div>
     `).join('')}
+
+    <!-- Individual dept cards -->
+    <div class="video-group-title" style="margin-top:2rem;margin-bottom:1rem">🏥 本院 ${ALLIED_HEALTH_CCC.length} 個醫事職類 CCC 章程亮點對照</div>
+    <div class="dept-charter-grid">
+      ${ALLIED_HEALTH_CCC.map(d=>{
+        const membersStr = d.members.map(m=>{
+          let s = m.role;
+          if(m.count && m.count!=='1') s += ' × ' + m.count;
+          if(m.note) s += '（' + m.note + '）';
+          return s;
+        }).join('、');
+        const chairMember = d.members.find(m=>m.role==='主席');
+        const chairStr = chairMember
+          ? (d.chairTerm ? d.chairTerm : chairMember.note || '依規章')
+          : '';
+
+        const highlights = [];
+        if(d.scope.length) highlights.push(`<strong>適用對象：</strong>${d.scope[0]}`);
+        if(d.tools.length) highlights.push(`<strong>評量工具：</strong>${d.tools.join('、')}`);
+        if(d.feedbackModels.length) highlights.push(`<strong>回饋模型：</strong>${d.feedbackModels.join('、')}`);
+        if(d.ilpPrinciple) highlights.push(`<strong>ILP 原則：</strong>${d.ilpPrinciple}`);
+        if(d.workflow.length) highlights.push(`<strong>詳細流程：</strong>共 ${d.workflow.length} 步驟（${d.workflow.map(w=>w.step).join(' → ')}）`);
+        if(d.cadence.auditTriggers.length) highlights.push(`<strong>審查觸發：</strong>${d.cadence.auditTriggers.join('、')}`);
+        if(d.decisionOutcomes.length) highlights.push(`<strong>評核結果：</strong>${d.decisionOutcomes.join(' / ')}`);
+        if(d.recordRetention.length) highlights.push(`<strong>紀錄保存：</strong>${d.recordRetention[0].years} 年（${d.recordRetention.map(r=>r.name).join('、')}）`);
+        if(d.controlPoints.length) highlights.push(`<strong>控制重點：</strong>${d.controlPoints.join('；')}`);
+        if(d.responsibilities.length && !d.workflow.length) highlights.push(`<strong>主要職責：</strong>${d.responsibilities[0]}`);
+        if(d.docInfo.docNumber) highlights.push(`<strong>文件編號：</strong>${d.docInfo.docNumber}`);
+
+        return `
+        <div class="dept-charter-card dept-color-${d.color}">
+          <div class="dept-charter-header">
+            <div class="dept-charter-name">${d.department}</div>
+            ${d.docInfo.issueDate?`<div class="dept-charter-date">${d.docInfo.issueDate}</div>`:''}
+          </div>
+          <div class="dept-charter-meta">
+            <div class="dept-charter-meta-row"><span class="dept-charter-meta-key">委員組成</span><span>${membersStr}</span></div>
+            <div class="dept-charter-meta-row"><span class="dept-charter-meta-key">開會頻率</span><span>${d.cadence.regular}</span></div>
+            ${chairStr?`<div class="dept-charter-meta-row"><span class="dept-charter-meta-key">主席</span><span>${chairStr}</span></div>`:''}
+          </div>
+          <div class="dept-charter-highlights">
+            <div class="dept-charter-highlights-label">特色亮點</div>
+            <ul>${highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
+          </div>
+        </div>
+      `;}).join('')}
+    </div>
   `;
 }
 
